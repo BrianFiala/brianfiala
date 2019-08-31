@@ -1,6 +1,6 @@
 # brianfiala
 
-Source repository for ```http://brianfiala.club```
+Source repository for `http://brianfiala.club`
 
 ## CLI Commands
 
