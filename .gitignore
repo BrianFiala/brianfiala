@@ -1,5 +1,6 @@
 node_modules
 /build
+/htdocs
 /*.log
 *.lock
 .DS_Store
