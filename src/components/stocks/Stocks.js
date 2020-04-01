@@ -45,17 +45,17 @@ export default (props) => {
 	function generateStockTable() {
 		return stocks.length
 		? <table>
-				<tr>
-					<td>Symbol:</td>
-					<td>Name:</td>
-					<td>Current:</td>
-					<td>Opening:</td>
-					<td>Closing:</td>
-					<td>High:</td>
-					<td>Low:</td>
-				</tr>
-				{stockRows}
-			</table>
+			<tr>
+				<td>Symbol:</td>
+				<td>Name:</td>
+				<td>Current:</td>
+				<td>Opening:</td>
+				<td>Closing:</td>
+				<td>High:</td>
+				<td>Low:</td>
+			</tr>
+			{stockRows}
+		</table>
 		: <p>Enter a ticker symbol to get a quote</p>
 	}
 

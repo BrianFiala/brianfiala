@@ -45,15 +45,15 @@ export default (props) => {
 	function generateCitiesTable() {
 		return cities.length
 		? <table>
-				<tr>
-					<td>Name:</td>
-					<td>Id:</td>
-					<td>State:</td>
-					<td>Latitude:</td>
-					<td>Longitude:</td>
-				</tr>
-				{cityRows}
-			</table>
+            <tr>
+                <td>Name:</td>
+                <td>Id:</td>
+                <td>State:</td>
+                <td>Latitude:</td>
+                <td>Longitude:</td>
+            </tr>
+            {cityRows}
+        </table>
 		: <p>Enter a city name and state to lookupp details</p>
 	}
 
