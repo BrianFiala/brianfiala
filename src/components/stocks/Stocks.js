@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { useState, useEffect, useRef } from 'preact/hooks';
 import style from './stocks.scss';
 
-export default props => {
+export default (props) => {
     const symbolInput = useRef(null)
 	const [inputSymbol, setInputSymbol] = useState('')
 	const [stocks, setStocks] = useState([])
