@@ -1,33 +1,24 @@
-// import { h } from 'preact';
+import { h } from 'preact';
 import { useState, useEffect, useRef } from 'preact/hooks';
-import style from './style';
-
-// put in stockUtilities
-const getStock = async (symbol) => {
-	const jsonPromise = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${constants.FINNHUB_API_KEY}`)
-	return jsonPromise.json()
-}
-
-import constants from './constants.json';
+import style from './stocks.scss';
 
 export default props => {
-	const symbolInput = useRef(null)
-	
+    const symbolInput = useRef(null)
 	const [inputSymbol, setInputSymbol] = useState('')
 	const [stocks, setStocks] = useState([])
 	const [stockRows, setStockRows] = useState()
 	
 	useEffect(async () => {
-		if (inputSymbol) {
-			const newStock = {symbol: inputSymbol, ...await getStock(inputSymbol)}
+        if (inputSymbol) {
+            const newStock = {symbol: inputSymbol, ...await getStock(inputSymbol)}
 			setStocks([...stocks, newStock])
 			setInputSymbol('')
 		}
 	}, [inputSymbol])
 	
 	useEffect(() => {
-		if (stocks.length) {
-			setStockRows(stocks.map(stock => 
+        if (stocks.length) {
+            setStockRows(stocks.map(stock => 
 				<tr>
 					<td>{stock.symbol}</td>
 					<td></td>
@@ -41,6 +32,11 @@ export default props => {
 		}
 	}, [stocks])
 	
+    const getStock = async (symbol) => {
+        const jsonPromise = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=bq18qvfrh5refsdeb8hg`)
+        return jsonPromise.json()
+    }
+
 	function onSubmit(event) {
 		event.preventDefault();
 		setInputSymbol(symbolInput.current.value)
@@ -64,7 +60,7 @@ export default props => {
 	}
 
 	return (
-		<div class={style.demos}>
+		<div class={style.stocks}>
 			{generateStockTable()}<br/>
 			<form onSubmit={onSubmit}>
 				<label style={{margin: '10px'}} for="symbol">Enter a symbol:</label>

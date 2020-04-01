@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import style from './style';
+import style from './profile.scss';
 
 export default class Profile extends Component {
 	state = {
