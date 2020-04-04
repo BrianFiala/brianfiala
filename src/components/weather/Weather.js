@@ -14,16 +14,18 @@ export default function Weather() {
     const state = stateInput.current.value.toUpperCase()
     if (city && state) {
       const newCity = await WeatherService.getCityInfo(city, state)
-      setCities([...cities, ...newCity ])
-      cityInput.current.value = ''
-      stateInput.current.value = ''
+      if (newCity) {
+        setCities([...cities, ...newCity ])
+        cityInput.current.value = ''
+        stateInput.current.value = ''
+      }
     }
   }
 
   return (
     <div class={style.weather}>
-      {cities.length
-        ? <table>
+      {cities.length ?
+        <table>
           <tr>
             <td>Name:</td>
             <td>Id:</td>

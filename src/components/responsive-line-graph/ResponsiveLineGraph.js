@@ -22,7 +22,7 @@ export default function MyResponsiveLine({ data, areaBaselineValue, height, widt
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: 'transportation',
+          legend: 'time',
           legendOffset: 36,
           legendPosition: 'middle'
         }}
@@ -31,7 +31,7 @@ export default function MyResponsiveLine({ data, areaBaselineValue, height, widt
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: 'count',
+          legend: 'value',
           legendOffset: -40,
           legendPosition: 'middle'
         }}

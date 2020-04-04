@@ -2,28 +2,50 @@ import { h } from 'preact'
 import { useState, useRef } from 'preact/hooks'
 import style from './stocks.scss'
 import MyResponsiveLine from '../responsive-line-graph/ResponsiveLineGraph'
-import data from '../../assets/sampleStockData'
 import { StockService } from '../../api/StockService'
+const ONE_WEEK = 60 * 60 * 24 * 7
 
 export default function Stocks() {
   const symbolInput = useRef(null)
   const [stocks, setStocks] = useState([])
+
+  function transformStock(symbol, stock) {
+    let stockData = []
+    for (let i = 0; i < stock.c.length; ++i) {
+      stockData.push({
+        x: (new Date(stock.t[i] * 1000)).toDateString(),
+        y: stock.c[i]
+      })
+    }
+
+    return {
+      id: symbol,
+      data: stockData
+    }
+  }
   
   async function onSubmit(event) {
     event.preventDefault()
-    if (symbolInput.current.value) {
-      setStocks([...stocks, {
-        symbol: symbolInput.current.value,
-        ...await StockService.getStock(symbolInput.current.value)
-      }])
+    const symbol = symbolInput.current.value.toUpperCase()
+    const resolution = 'D'
+    const end = Math.floor(Date.now() / 1000)
+    const start = end - ONE_WEEK
+    if (symbol) {
+      const stock = await StockService.getStock(symbol, resolution, start, end)
+      if (stock.s === 'ok') {
+        setStocks([
+          ...stocks,
+          transformStock(symbol, stock)
+        ])
+        symbolInput.current.value = ''
+      }
     }
-    symbolInput.current.value = ''
   }
 
   return (
     <div class={style.stocks}>
-      {stocks.length
-        ? <table>
+      {/* {stocks.length ?
+        <table>
           <tr>
             <td>Symbol:</td>
             <td>Name:</td>
@@ -46,7 +68,7 @@ export default function Stocks() {
           ))}
         </table>
         : <p>Enter a ticker symbol to get a quote</p>
-      }<br />
+      }<br /> */}
       <form onSubmit={onSubmit}>
         <label style={{ margin: '10px' }} for="symbol">
           Enter a symbol:
@@ -64,9 +86,10 @@ export default function Stocks() {
           value="fetch quote"
         />
       </form><br />
-      <MyResponsiveLine data={data} areaBaselineValue={44.2} height='500px' width='500px' />
+      {stocks.length ?
+        <MyResponsiveLine data={stocks} areaBaselineValue={44.2} height='500px' width='500px' />
+        : null}
     </div>
   )
 }
 Stocks.displayName = 'Stocks'
-
