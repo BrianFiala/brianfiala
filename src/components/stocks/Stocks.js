@@ -1,6 +1,8 @@
-import { h, render } from 'preact';
+import { h, render } from 'preact'
 import { useState, useEffect, useRef } from 'preact/hooks'
 import style from './stocks.scss'
+import MyResponsiveLine from '../../components/responsive-line-graph/MyResponsiveLine'
+import data from '../../assets/sampleStockData'
 
 export default function Stocks() {
   const symbolInput = useRef(null)
@@ -70,6 +72,24 @@ export default function Stocks() {
     )
   }
 
+  function transformStock(symbol, stockData) {
+    let data = []
+
+    if (stockData.c) {
+      for (let i = 0; i < stockData.c.length; ++i) {
+        data.push({
+          x: (new Date(stockData.t[i] * 1000)).toDateString(),
+          y: stockData.c[i]
+        })
+      }
+    }
+
+    return {
+      id: symbol,
+      data: [...data]
+    }
+  }
+
   return (
     <div class={style.stocks}>
       {generateStockTable()}
@@ -91,7 +111,8 @@ export default function Stocks() {
           type="submit"
           value="fetch quote"
         />
-      </form>
+      </form><br />
+      <MyResponsiveLine data={data} areaBaselineValue={44.2} height='500px' width='500px' />
     </div>
   )
 }

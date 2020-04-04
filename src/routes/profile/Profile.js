@@ -1,4 +1,4 @@
-import { h, render } from 'preact';
+import { h, render } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 import style from './profile.scss'
 
