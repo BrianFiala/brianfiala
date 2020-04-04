@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { useState, useEffect, useRef } from 'preact/hooks'
+import { useState, useRef } from 'preact/hooks'
 import style from './stocks.scss'
 import MyResponsiveLine from '../responsive-line-graph/ResponsiveLineGraph'
 import data from '../../assets/sampleStockData'

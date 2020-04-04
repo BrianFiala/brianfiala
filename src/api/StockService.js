@@ -9,7 +9,6 @@ export const StockService = {
 
   transformStock: (symbol, stockData) => {
     let data = []
-
     if (stockData.c) {
       for (let i = 0; i < stockData.c.length; ++i) {
         data.push({
