@@ -1,4 +1,4 @@
-import { h, render } from 'preact'
+import { h } from 'preact'
 import { ResponsiveLine } from '@nivo/line'
 
 export default function MyResponsiveLine({ data, areaBaselineValue, height, width }) {

@@ -1,49 +1,25 @@
-import { h, render } from 'preact';
+import { h } from 'preact'
 import style from './weather.scss'
-import { useState, useEffect, useRef } from 'preact/hooks'
+import { useState, useRef } from 'preact/hooks'
+import { WeatherService } from '../../api/WeatherService'
 
-//api.openweathermap.org/data/2.5/forecast?id=524901&APPID=1111111111
-export default function Weather(props) {
-  // const KEY = 'd4e4a060a1f951d7a177e5bdfc448049'
+export default function Weather() {
   const cityInput = useRef(null)
   const stateInput = useRef(null)
-  const [cityState, setCityState] = useState({ city: '', state: '' })
   const [cities, setCities] = useState([])
-  const [cityRows, setCityRows] = useState()
-  let usaCities
 
-  useEffect(async () => {
-    if (cityState.city.length && cityState.state.length) {
-      if (!usaCities) usaCities = await (await fetch('/assets/usa.city.list.json')).json()
-      const newCity = usaCities.filter(city =>
-        city.state.toUpperCase() === cityState.state.toUpperCase()
-        && city.name.toUpperCase() === cityState.city.toUpperCase()
-      )
-      setCities([...cities, ...newCity])
-      setCityState({ city: '', state: '' })
-    }
-  }, [cityState])
-
-  useEffect(() => {
-    if (cities.length) {
-      setCityRows(cities.map(city => (
-        <tr>
-          <td>{city.name}</td>
-          <td>{city.id}</td>
-          <td>{city.state}</td>
-          <td>{city.coord.lat}</td>
-          <td>{city.coord.lon}</td>
-        </tr>
-      )))
-    }
-  }, [cities])
-
-  function onSubmit(event) {
+  async function onSubmit(event) {
     event.preventDefault()
-    setCityState({
-      city: cityInput.current.value,
-      state: stateInput.current.value
-    })
+    const cityState = {
+      city: cityInput.current.value.toUpperCase(),
+      state: stateInput.current.value.toUpperCase()
+    }
+    if (cityState.city && cityState.state) {
+      const newCity = await WeatherService.getCityInfo(cityState)
+      setCities([...cities, ...newCity ])
+      cityInput.current.value = ''
+      stateInput.current.value = ''
+    }
   }
 
   function generateCitiesTable() {
@@ -56,7 +32,15 @@ export default function Weather(props) {
           <td>Latitude:</td>
           <td>Longitude:</td>
         </tr>
-        {cityRows}
+        {cities.map(city => (
+          <tr>
+            <td>{city.name}</td>
+            <td>{city.id}</td>
+            <td>{city.state}</td>
+            <td>{city.coord.lat}</td>
+            <td>{city.coord.lon}</td>
+          </tr>
+        ))}
       </table>
       : <p>Enter a city name and state to lookup details</p>
   }
@@ -66,9 +50,9 @@ export default function Weather(props) {
       {generateCitiesTable()}<br />
       <form onSubmit={onSubmit}>
         <label style={{ margin: '10px' }} for="city">Enter a city name:</label>
-        <input style={{ margin: '10px', padding: '5px' }} type="text" id="city-input" name="city" ref={cityInput} value={cityState.city} />
+        <input style={{ margin: '10px', padding: '5px' }} type="text" id="city-input" name="city" ref={cityInput} />
         <label style={{ margin: '10px' }} for="state">Enter a state abbreviation:</label>
-        <input style={{ margin: '10px', padding: '5px' }} type="text" id="state-input" name="state" ref={stateInput} value={cityState.state} />
+        <input style={{ margin: '10px', padding: '5px' }} type="text" id="state-input" name="state" ref={stateInput} />
         <input style={{ margin: '10px', '-webkit-appearance': 'none' }} type="submit" value="fetch city details" />
       </form>
     </div>

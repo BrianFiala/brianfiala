@@ -1,4 +1,4 @@
-import { h, render } from 'preact';
+import { h } from 'preact'
 import { Link } from 'preact-router/match'
 import style from './header.scss'
 

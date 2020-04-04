@@ -1,4 +1,4 @@
-import { h, render } from 'preact'
+import { h } from 'preact'
 import { Router } from 'preact-router'
 import Header from '../header/Header'
 import Home from '../../routes/home/Home'

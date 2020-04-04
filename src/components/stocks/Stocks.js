@@ -1,27 +1,15 @@
-import { h, render } from 'preact'
+import { h } from 'preact'
 import { useState, useEffect, useRef } from 'preact/hooks'
 import style from './stocks.scss'
-import MyResponsiveLine from '../../components/responsive-line-graph/MyResponsiveLine'
+import MyResponsiveLine from '../responsive-line-graph/ResponsiveLineGraph'
 import data from '../../assets/sampleStockData'
+import { StockService } from '../../api/StockService'
 
 export default function Stocks() {
   const symbolInput = useRef(null)
-  const [inputSymbol, setInputSymbol] = useState('')
-  const [stocks, setStocks] = useState([])
   const [stockRows, setStockRows] = useState()
+  const [stocks, setStocks] = useState([])
   
-
-  useEffect(async () => {
-    if (inputSymbol) {
-      const newStock = {
-        symbol: inputSymbol,
-        ...(await getStock(inputSymbol))
-      }
-      setStocks([...stocks, newStock])
-      setInputSymbol('')
-    }
-  }, [inputSymbol])
-
   useEffect(() => {
     if (stocks.length) {
       setStockRows(
@@ -40,17 +28,15 @@ export default function Stocks() {
     }
   }, [stocks])
 
-  const getStock = async symbol => {
-    const jsonPromise = await fetch(
-      `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=bq18qvfrh5refsdeb8hg`
-    )
-    //graph: `https://finnhub.io/api/v1/stock/candle?${symbol}=BMW.DE&resolution=60&from=${start}&to=${end}&token=bq18qvfrh5refsdeb8hg`
-    return jsonPromise.json()
-  }
-
-  function onSubmit(event) {
+  async function onSubmit(event) {
     event.preventDefault()
-    setInputSymbol(symbolInput.current.value)
+    if (symbolInput.current.value) {
+      setStocks([...stocks, {
+        symbol: symbolInput.current.value,
+        ...await StockService.getStock(symbolInput.current.value)
+      }])
+    }
+    symbolInput.current.value = ''
   }
 
   function generateStockTable() {
@@ -72,24 +58,6 @@ export default function Stocks() {
     )
   }
 
-  function transformStock(symbol, stockData) {
-    let data = []
-
-    if (stockData.c) {
-      for (let i = 0; i < stockData.c.length; ++i) {
-        data.push({
-          x: (new Date(stockData.t[i] * 1000)).toDateString(),
-          y: stockData.c[i]
-        })
-      }
-    }
-
-    return {
-      id: symbol,
-      data: [...data]
-    }
-  }
-
   return (
     <div class={style.stocks}>
       {generateStockTable()}
@@ -104,7 +72,6 @@ export default function Stocks() {
           id="symbol-input"
           name="symbol"
           ref={symbolInput}
-          value={inputSymbol}
         />
         <input
           style={{ margin: '10px', '-webkit-appearance': 'none' }}

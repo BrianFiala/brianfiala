@@ -1,4 +1,4 @@
-import { h, render } from 'preact'
+import { h } from 'preact'
 import style from './demos.scss'
 import Stocks from '../../components/stocks/Stocks'
 import Weather from '../../components/weather/Weather'
