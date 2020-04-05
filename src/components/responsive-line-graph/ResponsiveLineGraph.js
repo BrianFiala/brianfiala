@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { ResponsiveLine } from '@nivo/line'
 
-export default function MyResponsiveLine({ data, areaBaselineValue, height, width }) {
+export default function ResponsiveLineGraph({ data, height, width }) {
   const dimensions = {
     height,
     width
@@ -13,48 +13,26 @@ export default function MyResponsiveLine({ data, areaBaselineValue, height, widt
         data={data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
+        yScale={{ type: 'linear', min: 0, max: 'auto', stacked: false, reverse: false }}
         curve="natural"
         axisTop={null}
         axisRight={null}
-        axisBottom={{
-          orient: 'bottom',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'time',
-          legendOffset: 36,
-          legendPosition: 'middle'
-        }}
-        axisLeft={{
-          orient: 'left',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'value',
-          legendOffset: -40,
-          legendPosition: 'middle'
-        }}
+        axisBottom={null}
+        axisLeft={null}
         enableGridX={false}
         enableGridY={false}
         colors={{ scheme: 'spectral' }}
-        pointSize={10}
-        pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
-        pointLabel="y"
-        pointLabelYOffset={-12}
-        enableArea
+        enablePoints={false}
+        enableArea={true}
         areaOpacity={0.15}
-        areaBaselineValue={areaBaselineValue}
-        useMesh
+        enableSlices="x"
         legends={[
           {
-            anchor: 'bottom-right',
-            direction: 'column',
+            anchor: 'bottom',
+            direction: 'row',
             justify: false,
-            translateX: 100,
-            translateY: 0,
+            translateX: 0,
+            translateY: 32,
             itemsSpacing: 0,
             itemDirection: 'left-to-right',
             itemWidth: 80,
@@ -78,4 +56,4 @@ export default function MyResponsiveLine({ data, areaBaselineValue, height, widt
     </section>
   )
 }
-MyResponsiveLine.displayName = 'MyResponsiveLine'
+ResponsiveLineGraph.displayName = 'ResponsiveLineGraph'

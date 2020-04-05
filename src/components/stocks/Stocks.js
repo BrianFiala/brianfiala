@@ -3,7 +3,6 @@ import { useState, useRef } from 'preact/hooks'
 import style from './stocks.scss'
 import MyResponsiveLine from '../responsive-line-graph/ResponsiveLineGraph'
 import { StockService } from '../../api/StockService'
-const ONE_WEEK = 60 * 60 * 24 * 7
 
 export default function Stocks() {
   const symbolInput = useRef(null)
@@ -27,11 +26,9 @@ export default function Stocks() {
   async function onSubmit(event) {
     event.preventDefault()
     const symbol = symbolInput.current.value.toUpperCase()
-    const resolution = 'D'
-    const end = Math.floor(Date.now() / 1000)
-    const start = end - ONE_WEEK
+    const duration = 'year'
     if (symbol) {
-      const stock = await StockService.getStock(symbol, resolution, start, end)
+      const stock = await StockService.getStock(symbol, duration)
       if (stock.s === 'ok') {
         setStocks([
           ...stocks,
@@ -78,16 +75,14 @@ export default function Stocks() {
           type="text"
           id="symbol-input"
           name="symbol"
-          ref={symbolInput}
-        />
+          ref={symbolInput} />
         <input
           style={{ margin: '10px', '-webkit-appearance': 'none' }}
           type="submit"
-          value="fetch quote"
-        />
+          value="fetch quote" />
       </form><br />
       {stocks.length ?
-        <MyResponsiveLine data={stocks} areaBaselineValue={44.2} height='500px' width='500px' />
+        <MyResponsiveLine data={stocks} height='500px' width='1000px' />
         : null}
     </div>
   )
