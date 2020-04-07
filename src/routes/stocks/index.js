@@ -1,10 +1,10 @@
-import { h } from 'preact'
 import { useState, useRef } from 'preact/hooks'
+import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
 import style from './style'
 import MyResponsiveLine from '../../components/ResponsiveLineGraph'
 import { StockService } from '../../api/StockService'
 
-export default function Stocks() {
+const Stocks = () => {
   const symbolInput = useRef(null)
   const [stocks, setStocks] = useState([])
 
@@ -41,6 +41,23 @@ export default function Stocks() {
 
   return (
     <div class={style.stocks}>
+      <Card raised>
+        <CardContent>
+          <Typography variant="h6">
+              Stocks card
+          </Typography><br />
+          <Typography variant="h3">
+              Welcome to stocks route
+          </Typography><br />
+          <Typography variant="body2">
+              Fruitcake brownie donut dessert. Macaroon cotton candy dessert cookie jelly-o chocolate wafer sesame snaps. Icing sugar plum jelly jelly beans jujubes halvah jelly caramels jujubes. Carrot cake fruitcake sweet roll cookie. Jelly beans chocolate bar pie ice cream candy canes jelly-o sugar plum. Pastry gingerbread sweet roll chupa chups. Toffee lemon drops candy canes. Donut ice cream sweet roll pastry liquorice topping jelly-o. Pastry sugar plum dragée. Lemon drops chupa chups cheesecake sweet pastry fruitcake cookie cookie.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="large">OKAY</Button>
+        </CardActions>
+      </Card>
+
       {/* {stocks.length ?
         <table>
           <tr>
@@ -66,7 +83,7 @@ export default function Stocks() {
         </table>
         : <p>Enter a ticker symbol to get a quote</p>
       }<br /> */}
-      <form onSubmit={onSubmit}>
+      {/* <form onSubmit={onSubmit}>
         <label style={{ margin: '10px' }} for="symbol">
           Enter a symbol:
         </label>
@@ -85,8 +102,9 @@ export default function Stocks() {
       </form><br />
       {stocks.length ?
         <MyResponsiveLine data={stocks} height="500px" width="1000px" />
-        : null}
+        : null} */}
     </div>
   )
 }
 Stocks.displayName = 'Stocks'
+export default Stocks

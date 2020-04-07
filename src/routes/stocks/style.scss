@@ -1,14 +1,7 @@
 .stocks {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 56px 20px;
+  padding: 20px;
   min-height: 100%;
   width: 100%;
   background: url("/assets/images/putABirdOnIt.png") no-repeat center;
   background-size: contain;
-}
-
-.graph {
-  height: 500px;
-  width: 750px;
 }

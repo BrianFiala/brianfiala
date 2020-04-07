@@ -1,27 +1,26 @@
-import { h, Component } from 'preact'
-import Card from 'preact-material-components/Card'
-import 'preact-material-components/Card/style.css'
-import 'preact-material-components/Button/style.css'
+import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
 import style from './style'
 
-export default class Home extends Component {
-  render() {
-    return (
-      <div class={`${style.home} page`}>
-        <h1>Home route</h1>
-        <Card>
-          <div class={style.cardHeader}>
-            <h2 class=" mdc-typography--title">Home card</h2>
-            <div class=" mdc-typography--caption">Welcome to home route</div>
-          </div>
-          <div class={style.cardBody}>
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-          </div>
-          <Card.Actions>
-            <Card.ActionButton>OKAY</Card.ActionButton>
-          </Card.Actions>
-        </Card>
-      </div>
-    )
-  }
+export default function Home() {
+
+  return (
+    <div class={`${style.home} page`}>
+      <Card raised>
+        <CardContent>
+          <Typography variant="h6">
+            Home card
+          </Typography><br />
+          <Typography variant="h3">
+            Welcome to home route
+          </Typography><br />
+          <Typography variant="body2">
+            Fruitcake brownie donut dessert. Macaroon cotton candy dessert cookie jelly-o chocolate wafer sesame snaps. Icing sugar plum jelly jelly beans jujubes halvah jelly caramels jujubes. Carrot cake fruitcake sweet roll cookie. Jelly beans chocolate bar pie ice cream candy canes jelly-o sugar plum. Pastry gingerbread sweet roll chupa chups. Toffee lemon drops candy canes. Donut ice cream sweet roll pastry liquorice topping jelly-o. Pastry sugar plum dragée. Lemon drops chupa chups cheesecake sweet pastry fruitcake cookie cookie.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="large">OKAY</Button>
+        </CardActions>
+      </Card>
+    </div>
+  )
 }

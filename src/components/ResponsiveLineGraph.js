@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import { h } from 'preact' /** @jsx h */
 import { ResponsiveLine } from '@nivo/line'
 
 export default function ResponsiveLineGraph({ data, height, width }) {

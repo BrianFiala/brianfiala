@@ -1,62 +1,52 @@
-import { h, Component } from 'preact'
+import { h, Component } from 'preact' /** @jsx h */
 import { route } from 'preact-router'
-import TopAppBar from 'preact-material-components/TopAppBar'
-import Drawer from 'preact-material-components/Drawer'
-import List from 'preact-material-components/List'
-import Dialog from 'preact-material-components/Dialog'
-import Switch from 'preact-material-components/Switch'
-import 'preact-material-components/Switch/style.css'
-import 'preact-material-components/Dialog/style.css'
-import 'preact-material-components/Drawer/style.css'
-import 'preact-material-components/List/style.css'
-import 'preact-material-components/TopAppBar/style.css'
+import { 
+  // TopAppBar,
+  Button,
+  Drawer
+  // List,
+  // Dialog,
+  // Switch
+} from '@material-ui/core'
 // import style from './style';
 
 export default class Header extends Component {
+  drawerRef = drawer => (this.drawer = drawer);
+  dialogRef = dialog => (this.dialog = dialog);
+  openSettings = () => this.dialog.MDComponent.show();
+  openDrawer = () => (this.drawer.MDComponent.open = true);
   closeDrawer() {
     this.drawer.MDComponent.open = false
-    this.state = {
-      darkThemeEnabled: false
-    }
+    this.state = { darkThemeEnabled: false }
   }
 
-	openDrawer = () => (this.drawer.MDComponent.open = true);
+  toggleDarkTheme = () => {
+    this.setState({ darkThemeEnabled: !this.state.darkThemeEnabled },
+      () => {
+        if (this.state.darkThemeEnabled) document.body.classList.add('mdc-theme--dark')
+        else document.body.classList.remove('mdc-theme--dark')
+      }
+    )
+  }
 
-	openSettings = () => this.dialog.MDComponent.show();
+  linkTo = path => () => {
+    route(path)
+    this.closeDrawer()
+  };
+  
+  goHome = this.linkTo('/');
+  goToWeather = this.linkTo('/weather');
+  goToStocks = this.linkTo('/stocks');
 
-	drawerRef = drawer => (this.drawer = drawer);
-	dialogRef = dialog => (this.dialog = dialog);
-
-	linkTo = path => () => {
-	  route(path)
-	  this.closeDrawer()
-	};
-
-	goHome = this.linkTo('/');
-	goToMyProfile = this.linkTo('/profile');
-	goToWeather = this.linkTo('/weather');
-	goToStocks = this.linkTo('/stocks');
-
-	toggleDarkTheme = () => {
-	  this.setState(
-	    {
-	      darkThemeEnabled: !this.state.darkThemeEnabled
-	    },
-	    () => {
-	      if (this.state.darkThemeEnabled) {
-	        document.body.classList.add('mdc-theme--dark')
-	      }
-	      else {
-	        document.body.classList.remove('mdc-theme--dark')
-	      }
-	    }
-	  )
-	}
-
-	render(props) {
+  render(props) {
 	  return (
 	    <div>
-	      <TopAppBar className="topappbar">
+        JUST A DIV
+	        {/* <Button onClick={toggleDrawer('left', true)}>{'left'}</Button>
+	        <Drawer anchor={'left'} open={true}>
+	          {list('left')}
+	        </Drawer> */}
+	      {/* <TopAppBar className="topappbar">
 	        <TopAppBar.Row>
 	          <TopAppBar.Section align-start>
 	            <TopAppBar.Icon menu onClick={this.openDrawer}>menu</TopAppBar.Icon>
@@ -72,10 +62,6 @@ export default class Header extends Component {
 	          <Drawer.DrawerItem selected={props.selectedRoute === '/'} onClick={this.goHome}>
 	            <List.ItemGraphic>home</List.ItemGraphic>
 							Home
-	          </Drawer.DrawerItem>
-	          <Drawer.DrawerItem selected={props.selectedRoute === '/profile'} onClick={this.goToMyProfile}>
-	            <List.ItemGraphic>account_circle</List.ItemGraphic>
-							Profile
 	          </Drawer.DrawerItem>
 	          <Drawer.DrawerItem selected={props.selectedRoute === '/weather'} onClick={this.goToWeather}>
 	            <List.ItemGraphic>account_circle</List.ItemGraphic>
@@ -97,8 +83,8 @@ export default class Header extends Component {
 	        <Dialog.Footer>
 	          <Dialog.FooterButton accept>OK</Dialog.FooterButton>
 	        </Dialog.Footer>
-	      </Dialog>
+	      </Dialog> */}
 	    </div>
 	  )
-	}
+  }
 }

@@ -1,21 +1,25 @@
-import { h, Component } from 'preact'
-import Card from 'preact-material-components/Card'
-import 'preact-material-components/Card/style.css'
+import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
 import style from './style'
 
-export default class NotFound extends Component {
-  render() {
-    return (
-      <div class={`${style.home} page`}>
-        <Card>
-          <div class={style.cardHeader}>
-            <h2 class=" mdc-typography--title">404! Page not found.</h2>
-          </div>
-          <div class={style.cardBody}>
-						Looks like the page you are trying to access, doesn't exist.
-          </div>
-        </Card>
-      </div>
-    )
-  }
+export default function NotFound() {
+  return (
+    <div class={style.notFound}>
+      <Card raised>
+        <CardContent>
+          <Typography variant="h6">
+            404!
+          </Typography><br />
+          <Typography variant="h3">
+            Page Not Found
+          </Typography><br />
+          <Typography variant="body2">
+            Fruitcake brownie donut dessert. Macaroon cotton candy dessert cookie jelly-o chocolate wafer sesame snaps. Icing sugar plum jelly jelly beans jujubes halvah jelly caramels jujubes. Carrot cake fruitcake sweet roll cookie. Jelly beans chocolate bar pie ice cream candy canes jelly-o sugar plum. Pastry gingerbread sweet roll chupa chups. Toffee lemon drops candy canes. Donut ice cream sweet roll pastry liquorice topping jelly-o. Pastry sugar plum dragée. Lemon drops chupa chups cheesecake sweet pastry fruitcake cookie cookie.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="large">OKAY</Button>
+        </CardActions>
+      </Card>
+    </div>
+  )
 }

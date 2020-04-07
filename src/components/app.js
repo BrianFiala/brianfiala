@@ -1,39 +1,24 @@
-import { h, Component } from 'preact'
+import { useState } from 'preact/hooks'
 import { Router } from 'preact-router'
-
 import Header from './header'
 import Home from '../routes/home'
-import Profile from '../routes/profile'
 import NotFound from '../routes/404'
 import Weather from '../routes/weather'
 import Stocks from '../routes/stocks'
-// import Home from 'async!../routes/home';
-// import Profile from 'async!../routes/profile';
 
-export default class App extends Component {
-	/** Gets fired when the route changes.
-	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
-	 *	@param {string} event.url	The newly routed URL
-	 */
-	handleRoute = e => {
-	  this.setState({
-	    currentUrl: e.url
-	  })
-	};
+export default function Body() {
+  const [currentUrl, setCurrentUrl] = useState('')
+  function handleRoute(e) { setCurrentUrl(e.url) }
 
-	render() {
-	  return (
-	    <div id="app">
-	      <Header selectedRoute={this.state.currentUrl} />
-	      <Router onChange={this.handleRoute}>
-	        <Home path="/" />
-	        <Profile path="/profile/" user="me" />
-	        <Profile path="/profile/:user" />
-	        <Weather path="/weather" />
-	        <Stocks path="/stocks" />
-	        <NotFound default />
-	      </Router>
-	    </div>
-	  )
-	}
+  return (
+    <div id="app">
+      <Header selectedRoute={currentUrl} />
+      <Router onChange={handleRoute}>
+        <Home path="/" />
+        <Weather path="/weather" />
+        <Stocks path="/stocks" />
+        <NotFound default />
+      </Router>
+    </div>
+  )
 }
