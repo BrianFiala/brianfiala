@@ -41,7 +41,7 @@ const Weather = () => {
         </CardActions>
       </Card>
 
-      {/* {cities.length ?
+      {cities.length ?
         <table>
           <tr>
             <td>Name:</td>
@@ -68,7 +68,7 @@ const Weather = () => {
         <label style={{ margin: '10px' }} for="state">Enter a state abbreviation:</label>
         <input style={{ margin: '10px', padding: '5px' }} type="text" id="state-input" name="state" ref={stateInput} />
         <input style={{ margin: '10px', '-webkit-appearance': 'none' }} type="submit" value="fetch city details" />
-      </form> */}
+      </form>
     </div>
   )
 }

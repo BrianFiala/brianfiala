@@ -83,7 +83,7 @@ const Stocks = () => {
         </table>
         : <p>Enter a ticker symbol to get a quote</p>
       }<br /> */}
-      {/* <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <label style={{ margin: '10px' }} for="symbol">
           Enter a symbol:
         </label>
@@ -102,7 +102,7 @@ const Stocks = () => {
       </form><br />
       {stocks.length ?
         <MyResponsiveLine data={stocks} height="500px" width="1000px" />
-        : null} */}
+        : null}
     </div>
   )
 }

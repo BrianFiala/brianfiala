@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.9.9",
+    "@material-ui/icons": "^4.9.1",
     "@nivo/line": "^0.61.1",
     "preact": "^10.3.2",
     "preact-context-provider": "^2.0.0-preactx.2",
