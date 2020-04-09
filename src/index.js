@@ -1,8 +1,7 @@
-// import { ThemeProvider } from '@material-ui/styles'
-import 'typeface-roboto'
-import './style'
-import Body from './components/app'
+import Body from './components/Body'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import 'typeface-roboto'
+import './index.css'
 
 export default function App() {
   return (
