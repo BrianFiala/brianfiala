@@ -7,3 +7,7 @@ body {
 #app {
   height: 100%;
 }
+
+.bf-page {
+  margin-top: 56px;
+}

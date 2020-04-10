@@ -11,7 +11,7 @@ export default function ResponsiveLineGraph({ data, height, width }) {
     <section style={dimensions}>
       <ResponsiveLine
         data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{ top: 30, right: 20, bottom: 40, left: 20 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 0, max: 'auto', stacked: false, reverse: false }}
         curve="natural"

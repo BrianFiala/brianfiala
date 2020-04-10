@@ -1,5 +1,5 @@
 import { useState, useRef } from 'preact/hooks'
-import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
+import { Card, CardContent, CardActions, Button, Typography, Input } from '@material-ui/core'
 import style from './style'
 import MyResponsiveLine from '../../components/ResponsiveLineGraph'
 import { StockService } from '../../api/StockService'
@@ -40,7 +40,7 @@ const Stocks = () => {
   }
 
   return (
-    <div class={style.stocks}>
+    <div class={`${style.stocks} bf-page`}>
       <Card raised>
         <CardContent>
           <Typography variant="h6">
@@ -57,52 +57,56 @@ const Stocks = () => {
           <Button size="large">OKAY</Button>
         </CardActions>
       </Card>
-
+      <br />
+      <Card raised>
+        <CardContent>
+          <Typography variant="h6" inline>
+              Price Timeseries
+          </Typography>
+          <Input
+            style={{ margin: '10px', padding: '5px' }}
+            type="text"
+            id="symbol-input"
+            name="symbol"
+            inputRef={symbolInput}
+            placeholder="Enter a symbol"
+          />
+        </CardContent>
+        <CardActions>
+          <Button size="large" onClick={onSubmit}>fetch quote</Button>
+        </CardActions>
+        <br />
+        <CardContent>
+          {stocks.length
+            ? <MyResponsiveLine data={stocks} height="40vh" width="calc(100vw - 72px)" />
+            : null}
+        </CardContent>
+      </Card>
       {/* {stocks.length ?
-        <table>
-          <tr>
-            <td>Symbol:</td>
-            <td>Name:</td>
-            <td>Current:</td>
-            <td>Opening:</td>
-            <td>Closing:</td>
-            <td>High:</td>
-            <td>Low:</td>
-          </tr>
-          {stocks.map(stock => (
-            <tr>
-              <td>{stock.symbol}</td>
-              <td />
-              <td>{stock.pc.toFixed(2)}</td>
-              <td>{stock.o.toFixed(2)}</td>
-              <td>{stock.c.toFixed(2)}</td>
-              <td>{stock.h.toFixed(2)}</td>
-              <td>{stock.l.toFixed(2)}</td>
-            </tr>
-          ))}
-        </table>
-        : <p>Enter a ticker symbol to get a quote</p>
-      }<br /> */}
-      <form onSubmit={onSubmit}>
-        <label style={{ margin: '10px' }} for="symbol">
-          Enter a symbol:
-        </label>
-        <input
-          style={{ margin: '10px', padding: '5px' }}
-          type="text"
-          id="symbol-input"
-          name="symbol"
-          ref={symbolInput}
-        />
-        <input
-          style={{ margin: '10px', '-webkit-appearance': 'none' }}
-          type="submit"
-          value="fetch quote"
-        />
-      </form><br />
-      {stocks.length ?
-        <MyResponsiveLine data={stocks} height="500px" width="1000px" />
-        : null}
+    <table>
+      <tr>
+        <td>Symbol:</td>
+        <td>Name:</td>
+        <td>Current:</td>
+        <td>Opening:</td>
+        <td>Closing:</td>
+        <td>High:</td>
+        <td>Low:</td>
+      </tr>
+      {stocks.map(stock => (
+        <tr>
+          <td>{stock.symbol}</td>
+          <td />
+          <td>{stock.pc.toFixed(2)}</td>
+          <td>{stock.o.toFixed(2)}</td>
+          <td>{stock.c.toFixed(2)}</td>
+          <td>{stock.h.toFixed(2)}</td>
+          <td>{stock.l.toFixed(2)}</td>
+        </tr>
+      ))}
+    </table>
+    : <p>Enter a ticker symbol to get a quote</p>
+  }<br /> */}
     </div>
   )
 }

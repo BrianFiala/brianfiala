@@ -13,8 +13,8 @@ export default function Body() {
   function handleRoute(e) { setCurrentUrl(e.url) }
 
   return (
-    <div id="app">
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <div id="app">
         <Header selectedRoute={currentUrl} />
         <Router onChange={handleRoute}>
           <Home path="/" />
@@ -22,7 +22,7 @@ export default function Body() {
           <Stocks path="/stocks" />
           <NotFound default />
         </Router>
-      </ThemeProvider>
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }

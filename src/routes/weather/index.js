@@ -23,7 +23,7 @@ const Weather = () => {
   }
 
   return (
-    <div class={style.weather}>
+    <div class={`${style.weather} bf-page`}>
       <Card raised>
         <CardContent>
           <Typography variant="h6">

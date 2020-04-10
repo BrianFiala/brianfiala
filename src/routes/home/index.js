@@ -4,7 +4,7 @@ import style from './style'
 export default function Home() {
 
   return (
-    <div class={`${style.home} page`}>
+    <div class={`${style.home} bf-page`}>
       <Card raised>
         <CardContent>
           <Typography variant="h6">
