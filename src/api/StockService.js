@@ -6,7 +6,7 @@ const THREE_YEARS = ONE_YEAR * 3
 const API_KEY = 'bq18qvfrh5refsdeb8hg'
 
 export const StockService = {
-  getStock: async (symbol, duration) => {
+  getStockTimeseries: async (symbol, duration) => {
     let start, resolution
     let stock = {}
     const end = Math.floor(Date.now() / 1000)

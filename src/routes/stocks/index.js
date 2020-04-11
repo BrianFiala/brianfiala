@@ -1,5 +1,11 @@
 import { useState, useRef } from 'preact/hooks'
-import { Card, CardContent, CardActions, Button, Typography, Input } from '@material-ui/core'
+import {
+  Card, CardContent, CardActions, 
+  Button, Typography, Input,
+  TableContainer, Table,
+  TableHead, TableBody,
+  TableRow, TableCell
+} from '@material-ui/core'
 import style from './style'
 import MyResponsiveLine from '../../components/ResponsiveLineGraph'
 import { StockService } from '../../api/StockService'
@@ -8,7 +14,7 @@ const Stocks = () => {
   const symbolInput = useRef(null)
   const [stocks, setStocks] = useState([])
 
-  function transformStock(symbol, stock) {
+  function transformStockTimeseries(symbol, stock) {
     let stockData = []
     for (let i = 0; i < stock.c.length; ++i) {
       stockData.push({
@@ -28,11 +34,11 @@ const Stocks = () => {
     const symbol = symbolInput.current.value.toUpperCase()
     const duration = 'year'
     if (symbol) {
-      const stock = await StockService.getStock(symbol, duration)
+      const stock = await StockService.getStockTimeseries(symbol, duration)
       if (stock.s === 'ok') {
         setStocks([
           ...stocks,
-          transformStock(symbol, stock)
+          transformStockTimeseries(symbol, stock)
         ])
         symbolInput.current.value = ''
       }
@@ -75,38 +81,47 @@ const Stocks = () => {
         <CardActions>
           <Button size="large" onClick={onSubmit}>fetch quote</Button>
         </CardActions>
-        <br />
         <CardContent>
-          {stocks.length
-            ? <MyResponsiveLine data={stocks} height="40vh" width="calc(100vw - 72px)" />
+          {stocks.length ?
+            <MyResponsiveLine data={stocks} height="40vh" width="calc(100vw - 72px)" />
             : null}
         </CardContent>
       </Card>
-      {/* {stocks.length ?
-    <table>
-      <tr>
-        <td>Symbol:</td>
-        <td>Name:</td>
-        <td>Current:</td>
-        <td>Opening:</td>
-        <td>Closing:</td>
-        <td>High:</td>
-        <td>Low:</td>
-      </tr>
-      {stocks.map(stock => (
-        <tr>
-          <td>{stock.symbol}</td>
-          <td />
-          <td>{stock.pc.toFixed(2)}</td>
-          <td>{stock.o.toFixed(2)}</td>
-          <td>{stock.c.toFixed(2)}</td>
-          <td>{stock.h.toFixed(2)}</td>
-          <td>{stock.l.toFixed(2)}</td>
-        </tr>
-      ))}
-    </table>
-    : <p>Enter a ticker symbol to get a quote</p>
-  }<br /> */}
+      <br />
+      {stocks.length ?
+        <Card raised>
+          <CardContent>
+            <TableContainer>
+              <Table size="small" aria-label="stock info table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Symbol:</TableCell>
+                    <TableCell align="right">Price:</TableCell>
+                    <TableCell align="right">Open:</TableCell>
+                    <TableCell align="right">Close:</TableCell>
+                    <TableCell align="right">High:</TableCell>
+                    <TableCell align="right">Low:</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {stocks.map((stock) => (
+                    <TableRow key={stock.symbol}>
+                      <TableCell component="th" scope="row">
+                        {stock.symbol}
+                      </TableCell>
+                      <TableCell align="right">stock.pc.toFixed(2)</TableCell>
+                      <TableCell align="right">stock.o.toFixed(2)</TableCell>
+                      <TableCell align="right">stock.c.toFixed(2)</TableCell>
+                      <TableCell align="right">stock.h.toFixed(2)</TableCell>
+                      <TableCell align="right">stock.l.toFixed(2)</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </CardContent>
+        </Card>
+        : null }
     </div>
   )
 }

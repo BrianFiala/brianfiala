@@ -1,13 +1,8 @@
 import { useState } from 'preact/hooks'
 import MyDrawerNav from './MyDrawerNav'
-import AppBar from '@material-ui/core/AppBar'
-import Drawer from '@material-ui/core/Drawer'
-import Hidden from '@material-ui/core/Hidden'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
+import { AppBar, Drawer, Hidden, IconButton, Toolbar, Typography } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import MenuIcon from '@material-ui/icons/Menu'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 
 const drawerWidth = 240
@@ -21,6 +16,7 @@ const useStyles = makeStyles(theme => ({
       flexShrink: 0
     }
   },
+
   appBar: {
     zIndex: theme.zIndex.drawer + 1
   },
@@ -36,14 +32,14 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3)
   },
   closeMenuButton: {
-    marginRight: 'auto',
-    marginLeft: 0
+    marginRight: theme.spacing(2),
+    marginTop: theme.spacing(1)
   }
 }))
 
 function ResponsiveDrawer() {
-  const classes = useStyles()
   const theme = useTheme()
+  const classes = useStyles(theme)
   const [open, setOpen] = useState(false)
   function toggleDrawer() { setOpen(!open) }
 

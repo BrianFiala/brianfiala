@@ -1,12 +1,18 @@
 import style from './style'
-import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
+import {
+  Card, CardContent, CardActions, 
+  Button, Typography, Input,
+  TableContainer, Table,
+  TableHead, TableBody,
+  TableRow, TableCell
+} from '@material-ui/core'
 import { useState, useRef } from 'preact/hooks'
 import { WeatherService } from '../../api/WeatherService'
 
-const Weather = () => {
+export default function Weather() {
   const cityInput = useRef(null)
   const stateInput = useRef(null)
-  const [cities, setCities] = useState([])
+  const [cities, setCities] = useState([])  
 
   async function onSubmit(event) {
     event.preventDefault()
@@ -27,7 +33,7 @@ const Weather = () => {
       <Card raised>
         <CardContent>
           <Typography variant="h6">
-              Wetaher card
+              Weather card
           </Typography><br />
           <Typography variant="h3">
               Welcome to weather route
@@ -41,36 +47,66 @@ const Weather = () => {
         </CardActions>
       </Card>
 
+      <br />
+      <Card raised>
+        <CardContent>
+          <Typography variant="h6" inline>
+              City Location Lookup
+          </Typography>
+          <Input
+            style={{ margin: '10px', padding: '5px' }}
+            type="text"
+            id="city-input"
+            name="city"
+            inputRef={cityInput}
+            placeholder="Enter a city"
+          />
+          <Input
+            style={{ margin: '10px', padding: '5px' }}
+            type="text"
+            id="state-input"
+            name="state"
+            inputRef={stateInput}
+            placeholder="Enter a state"
+          />
+        </CardContent>
+        <CardActions>
+          <Button size="large" onClick={onSubmit}>fetch details</Button>
+        </CardActions>
+      </Card>
+      <br />
       {cities.length ?
-        <table>
-          <tr>
-            <td>Name:</td>
-            <td>Id:</td>
-            <td>State:</td>
-            <td>Latitude:</td>
-            <td>Longitude:</td>
-          </tr>
-          {cities.map(city => (
-            <tr>
-              <td>{city.name}</td>
-              <td>{city.id}</td>
-              <td>{city.state}</td>
-              <td>{city.coord.lat}</td>
-              <td>{city.coord.lon}</td>
-            </tr>
-          ))}
-        </table>
-        : <p>Enter a city name and state to lookup details</p>
-      }<br />
-      <form onSubmit={onSubmit}>
-        <label style={{ margin: '10px' }} for="city">Enter a city name:</label>
-        <input style={{ margin: '10px', padding: '5px' }} type="text" id="city-input" name="city" ref={cityInput} />
-        <label style={{ margin: '10px' }} for="state">Enter a state abbreviation:</label>
-        <input style={{ margin: '10px', padding: '5px' }} type="text" id="state-input" name="state" ref={stateInput} />
-        <input style={{ margin: '10px', '-webkit-appearance': 'none' }} type="submit" value="fetch city details" />
-      </form>
+        <Card raised>
+          <CardContent>
+            <TableContainer>
+              <Table size="small" aria-label="city info table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Name:</TableCell>
+                    <TableCell align="right">ID:</TableCell>
+                    <TableCell align="right">State:</TableCell>
+                    <TableCell align="right">Latitude:</TableCell>
+                    <TableCell align="right">Longitude:</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {cities.map((city) => (
+                    <TableRow key={city.name}>
+                      <TableCell component="th" scope="row">
+                        {city.name}
+                      </TableCell>
+                      <TableCell align="right">{city.id}</TableCell>
+                      <TableCell align="right">{city.state}</TableCell>
+                      <TableCell align="right">{(city.coord.lat).toFixed(2)}</TableCell>
+                      <TableCell align="right">{(city.coord.lon).toFixed(2)}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </CardContent>
+        </Card>
+        : null }
     </div>
   )
 }
-Weather.displayName = 'Weather'
-export default Weather
