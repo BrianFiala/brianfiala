@@ -2,13 +2,8 @@ import { h } from 'preact' /** @jsx h */
 import { ResponsiveLine } from '@nivo/line'
 
 export default function ResponsiveLineGraph({ data, height, width }) {
-  const dimensions = {
-    height,
-    width
-  }
-
   return (
-    <section style={dimensions}>
+    <section style={{ height, width }}>
       <ResponsiveLine
         data={data}
         margin={{ top: 30, right: 20, bottom: 40, left: 20 }}
@@ -56,4 +51,3 @@ export default function ResponsiveLineGraph({ data, height, width }) {
     </section>
   )
 }
-ResponsiveLineGraph.displayName = 'ResponsiveLineGraph'

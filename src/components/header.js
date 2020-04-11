@@ -1,88 +1,118 @@
+import clsx from 'clsx'
 import { useState } from 'preact/hooks'
-import MyDrawerNav from './MyDrawerNav'
-import { AppBar, Drawer, Hidden, IconButton, Toolbar, Typography } from '@material-ui/core'
-import CloseIcon from '@material-ui/icons/Close'
+import { makeStyles } from '@material-ui/core/styles'
+import { Drawer, AppBar, Toolbar,
+  Typography, Divider, IconButton, Badge } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import NotificationsIcon from '@material-ui/icons/Notifications'
+import NavList from '../components/NavList'
 
 const drawerWidth = 240
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex'
+const useStyles = makeStyles((theme) => ({
+  toolbar: {
+    paddingRight: 24 // keep right padding when drawer closed
   },
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0
-    }
+  toolbarIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar
   },
-
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: 36
   },
-  toolbar: theme.mixins.toolbar,
+  menuButtonHidden: {
+    display: 'none'
+  },
+  title: {
+    flexGrow: 1
+  },
   drawerPaper: {
-    width: drawerWidth
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3)
-  },
-  closeMenuButton: {
-    marginRight: theme.spacing(2),
-    marginTop: theme.spacing(1)
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9)
+    }
   }
 }))
 
-function ResponsiveDrawer() {
-  const theme = useTheme()
-  const classes = useStyles(theme)
+export default function Header() {
+  const classes = useStyles()
   const [open, setOpen] = useState(false)
   function toggleDrawer() { setOpen(!open) }
 
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+    <header>
+      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+        <Toolbar className={classes.toolbar}>
           <IconButton
-            color="inherit"
-            aria-label="Open drawer"
             edge="start"
+            color="inherit"
+            aria-label="open drawer"
             onClick={toggleDrawer}
-            className={classes.menuButton}
+            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Super Awesome Webpage
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+            Widgety Dashboard
           </Typography>
+          <IconButton color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
         </Toolbar>
       </AppBar>
-      
-      <nav className={classes.drawer}>
-        <Hidden smUp implementation="css">
-          <Drawer
-            variant="temporary"
-            open={open}
-            onClose={toggleDrawer}
-            classes={{
-              paper: classes.drawerPaper
-            }}
-            ModalProps={{
-              keepMounted: true // Better open performance on mobile.
-            }}
-          >
-            <IconButton onClick={toggleDrawer} className={classes.closeMenuButton}>
-              <CloseIcon />
-            </IconButton>
-            <MyDrawerNav callBack={toggleDrawer} />
-          </Drawer>
-        </Hidden>
-      </nav>
-    </div>
+  
+  
+  
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
+        }}
+        open={open}
+      >
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={toggleDrawer}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <Divider />
+        <NavList />
+        <Divider />
+      </Drawer>
+    </header>
   )
 }
-export default ResponsiveDrawer
