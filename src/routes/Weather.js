@@ -1,14 +1,11 @@
-import clsx from 'clsx'
 import { WeatherService } from '../api/WeatherService'
 import { useState, useRef } from 'preact/hooks'
 import Title from '../components/Title'
-import {
-  Button, Typography, Paper,
-  Input, Table,
-  TableHead, TableBody,
-  TableRow, TableCell, Grid
-} from '@material-ui/core'
+import InfoItem from '../components/InfoItem'
+import message from '../assets/message.txt'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { Button, Paper, Input, Table, TableHead,
+  TableBody, TableRow, TableCell, Grid } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -16,9 +13,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column'
-  },
-  fixedHeight: {
-    height: 240
   }
 }))
 
@@ -28,7 +22,6 @@ export default function Weather() {
   const [cities, setCities] = useState([])
   const theme = useTheme()
   const classes = useStyles(theme) 
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   async function onSubmit(event) {
     event.preventDefault()
@@ -49,22 +42,15 @@ export default function Weather() {
 
       {/* Info Card */}
       <Grid item xs={12}>
-        <Paper className={classes.paper}>
-          <Title>Weather Card</Title><br />
-          <Typography variant="h3">
-            Welcome to weather route
-          </Typography><br />
-          <Typography variant="body2">
-            Fruitcake brownie donut dessert. Macaroon cotton candy dessert cookie jelly-o chocolate wafer sesame snaps. Icing sugar plum jelly jelly beans jujubes halvah jelly caramels jujubes. Carrot cake fruitcake sweet roll cookie. Jelly beans chocolate bar pie ice cream candy canes jelly-o sugar plum. Pastry gingerbread sweet roll chupa chups. Toffee lemon drops candy canes. Donut ice cream sweet roll pastry liquorice topping jelly-o. Pastry sugar plum dragée. Lemon drops chupa chups cheesecake sweet pastry fruitcake cookie cookie.
-          </Typography>
-          <Button size="large">OKAY</Button>
-        </Paper>
+        <InfoItem
+          identifier="Weather Card"
+          title="Welcome to weather route"
+          message={message} />
       </Grid>
-      <br />
 
-      {/* Symbol input item */}
+      {/* City input item */}
       <Grid item xs={12} md={3}>
-        <Paper elevation={8} className={classes.paper}>
+        <Paper elevation={cities.length ? 1 : 8} className={classes.paper}>
           <Title>Lookup a city</Title>
           <Input
             style={{ margin: '10px', padding: '5px' }}
@@ -72,25 +58,22 @@ export default function Weather() {
             id="city-input"
             name="city"
             inputRef={cityInput}
-            placeholder="Enter a city"
-          />
+            placeholder="Enter a city" />
           <Input
             style={{ margin: '10px', padding: '5px' }}
             type="text"
             id="state-input"
             name="state"
             inputRef={stateInput}
-            placeholder="Enter a state"
-          />
-          <Button size="large" onClick={onSubmit}>fetch quote</Button>
+            placeholder="Enter a state" />
+          <Button color="primary" size="large" onClick={onSubmit}>LOOKUP</Button>
         </Paper>
       </Grid>
-      <br />
 
       {/* Table item */}
       {cities.length ?
         <Grid item xs={12} md={9}>
-          <Paper className={fixedHeightPaper}>
+          <Paper className={classes.paper}>
             <Title>City details</Title>
             <Table size="small" aria-label="city info table">
               <TableHead>
@@ -113,8 +96,7 @@ export default function Weather() {
                     <TableCell align="right">{city.state}</TableCell>
                     <TableCell align="right">{(city.coord.lat).toFixed(2)}</TableCell>
                     <TableCell align="right">{(city.coord.lon).toFixed(2)}</TableCell>
-                  </TableRow>
-                ))}
+                  </TableRow> ))}
               </TableBody>
             </Table>
           </Paper>

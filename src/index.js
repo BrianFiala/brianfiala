@@ -6,9 +6,11 @@ import Layout from './components/Layout'
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <div id="app">
       <CssBaseline />
-      <Layout />
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Layout />
+      </ThemeProvider>
+    </div>
   )
 }

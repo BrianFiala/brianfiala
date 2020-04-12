@@ -80,8 +80,7 @@ export default function Header() {
             color="inherit"
             aria-label="open drawer"
             onClick={toggleDrawer}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
+            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}>
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
@@ -95,15 +94,10 @@ export default function Header() {
         </Toolbar>
       </AppBar>
   
-  
-  
       <Drawer
         variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
-        }}
-        open={open}
-      >
+        classes={{ paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose) }}
+        open={open}>
         <div className={classes.toolbarIcon}>
           <IconButton onClick={toggleDrawer}>
             <ChevronLeftIcon />
