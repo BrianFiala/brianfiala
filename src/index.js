@@ -1,4 +1,5 @@
 import 'typeface-roboto'
+import './style'
 import theme from './theme.js'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { CssBaseline } from '@material-ui/core'

@@ -5,7 +5,7 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import Title from '../../components/Title'
+import Title from '../../src/components/Title'
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
