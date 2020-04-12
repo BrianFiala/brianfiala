@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(2),
     height: 'calc(100vh - 56px)'
   },
-  copyRight: {
+  footerContainer: {
     paddingBottom: theme.spacing(2),
     paddingTop: theme.spacing(2)
   }
@@ -38,7 +38,7 @@ export default function Layout() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <RouteProvider />
-          <Container className={classes.copyRight}>
+          <Container className={classes.footerContainer}>
             <Footer />
           </Container>
         </Container>
