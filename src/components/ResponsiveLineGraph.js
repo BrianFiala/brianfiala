@@ -2,11 +2,14 @@ import { h } from 'preact' /** @jsx h */
 import Title from './Title'
 import { ResponsiveLine } from '@nivo/line'
 
-export default function ResponsiveLineGraph({ data, height, width }) {
+export default function ResponsiveLineGraph({ data }) {
   return (
     <>
       <Title>Timeseries</Title>
-      <section style={{ height, width }}>
+      <section style={{
+        height: '200px',
+        width: '100%'
+      }}>
         <ResponsiveLine
           data={data}
           margin={{ top: 30, right: 20, bottom: 40, left: 20 }}

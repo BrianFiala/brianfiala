@@ -1,7 +1,7 @@
 import 'typeface-roboto'
-import './style'
-import theme from './theme.js'
-import { ThemeProvider } from '@material-ui/core/styles'
+import './styles'
+import theme from './themes'
+import { ThemeProvider } from '@material-ui/styles'
 import { CssBaseline } from '@material-ui/core'
 import Layout from './components/Layout'
 
