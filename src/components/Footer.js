@@ -6,7 +6,7 @@ export default function Footer() {
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="http://brianfiala.club/">
-        Brian Fiala
+          Brian Fiala
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}

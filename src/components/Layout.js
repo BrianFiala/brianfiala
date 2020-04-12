@@ -6,17 +6,24 @@ import Footer from './Footer'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex'
+    display: 'flex',
+    height: '100vh'
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: '100vh',
     overflow: 'auto'
   },
   container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4)
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    paddingTop: theme.spacing(2),
+    height: 'calc(100vh - 56px)'
+  },
+  copyRight: {
+    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(2)
   }
 }))
 
@@ -31,7 +38,9 @@ export default function Layout() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <RouteProvider />
-          <Footer />
+          <Container className={classes.copyRight}>
+            <Footer />
+          </Container>
         </Container>
       </main>
     </div>

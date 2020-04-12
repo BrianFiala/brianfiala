@@ -1,9 +1,9 @@
-import { Grid, Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
+import { Card, CardContent, CardActions,
+  Grid, Button, Typography } from '@material-ui/core'
 
-export default function NotFound() {  
+export default function NotFound() {
   return (
     <Grid container spacing={3}>
-      {/* Info Card */}
       <Grid item>
         <Card raised>
           <CardContent>

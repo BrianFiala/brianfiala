@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 import { useState } from 'preact/hooks'
 import { makeStyles } from '@material-ui/core/styles'
-import { Drawer, AppBar, Toolbar,
-  Typography, Divider, IconButton, Badge } from '@material-ui/core'
+import { Drawer, AppBar, Toolbar, Typography,
+  Divider, IconButton, Badge } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import NavList from '../components/NavList'
 
-const drawerWidth = 240
+const drawerWidth = 200
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     paddingRight: 24 // keep right padding when drawer closed
