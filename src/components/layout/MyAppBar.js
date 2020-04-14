@@ -1,5 +1,4 @@
 import { h } from 'preact' /** @jsx h */
-import { useState } from 'preact/hooks'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -29,10 +28,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Header({menuCallback}) {
   const theme = useTheme()
   const classes = useStyles(theme)
-  const [open, setOpen] = useState(false)
 
   return (
-    <AppBar position="absolute" className={classes.appBar}>
+    <AppBar color="primary" position="absolute" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <IconButton
           edge="start"

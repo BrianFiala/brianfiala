@@ -7,19 +7,19 @@ export default function NavList({callBack}) {
     <List>
       <Link href="/">
         <ListItem button key="Home" onClick={callBack}>
-          <ListItemIcon><People color="secondary" /></ListItemIcon>
+          <ListItemIcon><People color="primary" /></ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
       </Link>
       <Link href="/weather">
         <ListItem button key="Weather" onClick={callBack}>
-          <ListItemIcon><CloudOutlined color="secondary" /></ListItemIcon>
+          <ListItemIcon><CloudOutlined color="primary" /></ListItemIcon>
           <ListItemText primary="Weather" />
         </ListItem>
       </Link>
       <Link href="/stocks">
         <ListItem button key="Stocks" onClick={callBack}>
-          <ListItemIcon><TrendingUp color="secondary" /></ListItemIcon>
+          <ListItemIcon><TrendingUp color="primary" /></ListItemIcon>
           <ListItemText primary="Stocks" />
         </ListItem>
       </Link>
