@@ -1,3 +1,4 @@
+import { h } from 'preact' /** @jsx h */
 import { StockService } from '../api/StockService'
 import { useRef } from 'preact/hooks'
 import Title from './Title'

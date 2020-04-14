@@ -1,5 +1,6 @@
 import { WeatherService } from '../api/WeatherService'
 import { useRef } from 'preact/hooks'
+import { h } from 'preact' /** @jsx h */
 import Title from './Title'
 import { Button, Input } from '@material-ui/core'
 

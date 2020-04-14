@@ -1,3 +1,4 @@
+import { h } from 'preact' /** @jsx h */
 import { Typography, Button } from '@material-ui/core'
 import Title from './Title'
 

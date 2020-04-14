@@ -1,3 +1,4 @@
+import { h } from 'preact' /** @jsx h */
 import { Router } from 'preact-router'
 import NotFound from '../routes/NotFound.js'
 import Weather from '../routes/Weather'
@@ -14,3 +15,4 @@ export default function RouteProvider() {
     </Router>
   )
 }
+

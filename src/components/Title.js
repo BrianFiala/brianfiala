@@ -1,3 +1,4 @@
+import { h } from 'preact' /** @jsx h */
 import Typography from '@material-ui/core/Typography'
 
 export default function Title(props) {

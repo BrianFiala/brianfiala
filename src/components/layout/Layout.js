@@ -1,7 +1,8 @@
+import { h } from 'preact' /** @jsx h */
 import { makeStyles, useTheme } from '@material-ui/styles'
 import { Container } from '@material-ui/core/'
 import Header from './Header'
-import RouteProvider from '../routes/RouteProvider'
+import RouteProvider from '../../routes/RouteProvider'
 import Footer from './Footer'
 
 const useStyles = makeStyles((theme) => ({

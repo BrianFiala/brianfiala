@@ -1,3 +1,4 @@
+import { h } from 'preact' /** @jsx h */
 import Title from './Title'
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core'
 

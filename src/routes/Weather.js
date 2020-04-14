@@ -1,3 +1,4 @@
+import { h } from 'preact' /** @jsx h */
 import CitySearch from '../components/CitySearch'
 import CityDetailsTable from '../components/CityDetailsTable'
 import { useState } from 'preact/hooks'

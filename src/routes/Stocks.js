@@ -1,3 +1,4 @@
+import { h } from 'preact' /** @jsx h */
 import { useState } from 'preact/hooks'
 import MyResponsiveLine from '../components/ResponsiveLineGraph'
 import InfoItem from '../components/InfoItem'
