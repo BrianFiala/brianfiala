@@ -6,7 +6,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-    paddingRight: theme.spacing(4) // keep right padding when drawer closed
+    paddingRight: theme.spacing(4)
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1

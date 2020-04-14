@@ -19,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: 'calc(100vh - 56px)',
+    height: `calc(100vh - ${theme.spacing(7)}px)`,
     padding: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
+      height: `calc(100vh - ${theme.spacing(8)}px)`,
       padding: theme.spacing(3)
     }
   },
