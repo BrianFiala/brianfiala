@@ -9,8 +9,8 @@ import Layout from './components/layout/Layout'
 export default function App() {
   return (
     <div id="app">
-      <CssBaseline />
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Layout />
       </ThemeProvider>
     </div>
