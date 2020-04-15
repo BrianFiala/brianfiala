@@ -41,5 +41,18 @@ export const StockService = {
     }
 
     return stock
+  },
+  getStockDetails: async (symbol) => {
+    let stock = {}
+    if (symbol) {
+      stock = await (
+        await fetch(
+          'https://finnhub.io/api/v1/quote' +
+          `?symbol=${symbol}` +
+          `&token=${API_KEY}`
+        )).json()
+    }
+
+    return stock
   }
 }

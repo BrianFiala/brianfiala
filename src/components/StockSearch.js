@@ -7,18 +7,19 @@ import { Button, Input } from '@material-ui/core'
 export default function CitySearch({stocks, setStocks}) {
   const symbolInput = useRef(null)
 
-  function transformStockTimeseries(symbol, stock) {
-    let stockData = []
-    for (let i = 0; i < stock.c.length; ++i) {
-      stockData.push({
-        x: (new Date(stock.t[i] * 1000)).toDateString(),
-        y: stock.c[i]
+  function transformStock(symbol, stock) {
+    let stockTimeseries = []
+    for (let i = 0; i < stock.timeseries.c.length; ++i) {
+      stockTimeseries.push({
+        x: (new Date(stock.timeseries.t[i] * 1000)).toDateString(),
+        y: stock.timeseries.c[i]
       })
     }
     
     return {
       id: symbol,
-      data: stockData
+      data: stockTimeseries,
+      details: stock.details
     }
   }
 
@@ -26,15 +27,25 @@ export default function CitySearch({stocks, setStocks}) {
     event.preventDefault()
     const symbol = symbolInput.current.value.toUpperCase()
     const duration = 'year'
-    if (symbol) {
-      const stock = await StockService.getStockTimeseries(symbol, duration)
-      if (stock.s === 'ok') {
-        setStocks([
-          ...stocks,
-          transformStockTimeseries(symbol, stock)
-        ])
-        symbolInput.current.value = ''
-      }
+    if (symbol.length) {
+      Promise.all([
+        StockService.getStockDetails(symbol),
+        StockService.getStockTimeseries(symbol, duration)
+      ])
+        .then((responses) => {
+          if (responses.length === 2 && responses[0].pc
+            && responses[1].s === 'ok' && responses[1].c.length) {
+            setStocks([
+              ...stocks,
+              transformStock(symbol, {
+                details: responses[0],
+                timeseries: responses[1]
+              })
+            ])
+            symbolInput.current.value = ''
+          }
+        })
+        .catch(err => console.error('stock service error', err))
     }
   }
   

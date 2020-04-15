@@ -19,15 +19,15 @@ export default function CityDetailsTable({stocks}) {
         </TableHead>
         <TableBody>
           {stocks.map((stock) => (
-            <TableRow key={stock.symbol}>
+            <TableRow key={stock.id}>
               <TableCell component="th" scope="row">
-                {stock.symbol}
+                {stock.id}
               </TableCell>
-              <TableCell align="right">stock.pc</TableCell>
-              <TableCell align="right">stock.o</TableCell>
-              <TableCell align="right">stock.c</TableCell>
-              <TableCell align="right">stock.h</TableCell>
-              <TableCell align="right">stock.l</TableCell>
+              <TableCell align="right">{stock.details.pc.toFixed(2)}</TableCell>
+              <TableCell align="right">{stock.details.o.toFixed(2)}</TableCell>
+              <TableCell align="right">{stock.details.c.toFixed(2)}</TableCell>
+              <TableCell align="right">{stock.details.h.toFixed(2)}</TableCell>
+              <TableCell align="right">{stock.details.l.toFixed(2)}</TableCell>
             </TableRow> ))}
         </TableBody>
       </Table>
