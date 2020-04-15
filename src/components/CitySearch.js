@@ -13,7 +13,7 @@ export default function CitySearch({cities, setCities}) {
     const city = cityInput.current.value.toUpperCase()
     const state = stateInput.current.value.toUpperCase()
     if (city && state) {
-      const newCity = await WeatherService.getCityInfo(city, state)
+      const newCity = await WeatherService.getCurrentWeather(city, state)
       if (newCity) {
         setCities([...cities, ...newCity ])
         cityInput.current.value = ''

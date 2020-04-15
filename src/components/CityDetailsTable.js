@@ -10,23 +10,19 @@ export default function CityDetailsTable({cities}) {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="right">ID</TableCell>
-            <TableCell align="right">State</TableCell>
-            <TableCell align="right">Latitude</TableCell>
-            <TableCell align="right">Longitude</TableCell>
+            <TableCell align="right">Condition</TableCell>
+            <TableCell align="right">Temp</TableCell>
+            <TableCell align="right">Feels like</TableCell>
           </TableRow>
         </TableHead>
             
         <TableBody>
           {cities.map((city) => (
             <TableRow key={city.name}>
-              <TableCell component="th" scope="row">
-                {city.name}
-              </TableCell>
-              <TableCell align="right">{city.id}</TableCell>
-              <TableCell align="right">{city.state}</TableCell>
-              <TableCell align="right">{(city.coord.lat).toFixed(2)}</TableCell>
-              <TableCell align="right">{(city.coord.lon).toFixed(2)}</TableCell>
+              <TableCell scope="row">{city.name}, {city.state}</TableCell>
+              <TableCell align="right">{city.current.weather[0].description}</TableCell>
+              <TableCell align="right">{city.current.temp}</TableCell>
+              <TableCell align="right">{city.current.feels_like}</TableCell>
             </TableRow> ))}
         </TableBody>
       </Table>
