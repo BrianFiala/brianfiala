@@ -1,5 +1,6 @@
 import { h } from 'preact' /** @jsx h */
 import { useState } from 'preact/hooks'
+import { Paper } from '@material-ui/core'
 import MyAppBar from './MyAppBar'
 import MyDrawer from './MyDrawer'
 
@@ -10,7 +11,9 @@ export default function Header() {
   return (
     <header>
       <MyAppBar menuCallback={toggleDrawer} />
-      <MyDrawer open={open} />
+      <Paper>
+        <MyDrawer open={open} />
+      </Paper>
     </header>
   )
 }
