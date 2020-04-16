@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Header({open}) {
+export default function MyDrawer({open}) {
   const theme = useTheme()
   const classes = useStyles(theme)
 

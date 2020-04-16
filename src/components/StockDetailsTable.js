@@ -3,7 +3,7 @@ import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/c
 import Title from './Title'
 import MyPaper from './MyPaper'
 
-export default function CityDetailsTable({stocks}) {
+export default function StockDetailsTable({stocks}) {
   return (
     <MyPaper>
       <Title>Stock details</Title>

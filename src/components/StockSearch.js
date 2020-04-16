@@ -5,7 +5,7 @@ import { StockService } from '../api/StockService'
 import Title from './Title'
 import MyPaper from './MyPaper'
 
-export default function CitySearch({stocks, setStocks, elevation}) {
+export default function StockSearch({stocks, setStocks, elevation}) {
   const symbolInput = useRef(null)
 
   function transformStock(symbol, stock) {

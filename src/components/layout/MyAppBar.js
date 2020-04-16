@@ -2,7 +2,7 @@ import { h } from 'preact' /** @jsx h */
 import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import MenuIcon from '@material-ui/icons/Menu'
-import SettingsIcon from '@material-ui/icons/Settings'
+import BrightnessIcon from '@material-ui/icons/Brightness4Outlined'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Header({menuCallback}) {
+export default function MyAppBar({menuCallback, toggleTheme}) {
   const theme = useTheme()
   const classes = useStyles(theme)
 
@@ -43,8 +43,8 @@ export default function Header({menuCallback}) {
         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
           Widgety Dashboard
         </Typography>
-        <IconButton color="inherit" className={classes.settingsButton}>
-          <SettingsIcon />
+        <IconButton color="inherit" className={classes.settingsButton} onClick={toggleTheme}>
+          <BrightnessIcon />
         </IconButton>
       </Toolbar>
     </AppBar>

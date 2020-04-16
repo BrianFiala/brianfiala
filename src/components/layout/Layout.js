@@ -32,13 +32,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Layout() {
+export default function Layout({toggleTheme}) {
   const theme = useTheme()
   const classes = useStyles(theme)
 
   return (
     <div className={classes.root}>
-      <Header />
+      <Header toggleTheme={toggleTheme} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
