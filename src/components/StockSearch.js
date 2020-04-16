@@ -1,10 +1,11 @@
 import { h } from 'preact' /** @jsx h */
-import { StockService } from '../api/StockService'
 import { useRef } from 'preact/hooks'
-import Title from './Title'
 import { Button, Input } from '@material-ui/core'
+import { StockService } from '../api/StockService'
+import Title from './Title'
+import MyPaper from './MyPaper'
 
-export default function CitySearch({stocks, setStocks}) {
+export default function CitySearch({stocks, setStocks, elevation}) {
   const symbolInput = useRef(null)
 
   function transformStock(symbol, stock) {
@@ -50,7 +51,7 @@ export default function CitySearch({stocks, setStocks}) {
   }
   
   return (
-    <>
+    <MyPaper elevation={elevation}>
       <Title>Lookup a stock</Title>
       <Input
         style={{ margin: '10px', padding: '5px' }}
@@ -60,6 +61,6 @@ export default function CitySearch({stocks, setStocks}) {
         inputRef={symbolInput}
         placeholder="Enter a symbol" />
       <Button color="primary" size="large" onClick={onSubmit}>fetch quote</Button>
-    </>
+    </MyPaper>
   )
 }

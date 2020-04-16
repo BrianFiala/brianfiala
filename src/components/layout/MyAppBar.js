@@ -1,6 +1,6 @@
 import { h } from 'preact' /** @jsx h */
-import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core'
+import { makeStyles, useTheme } from '@material-ui/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import SettingsIcon from '@material-ui/icons/Settings'
 

@@ -1,7 +1,7 @@
 import { h } from 'preact' /** @jsx h */
 import clsx from 'clsx'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Drawer } from '@material-ui/core'
+import { makeStyles, useTheme } from '@material-ui/styles'
 import NavList from './NavList'
 
 const drawerWidth = 200

@@ -1,10 +1,11 @@
-import { WeatherService } from '../api/WeatherService'
-import { useRef } from 'preact/hooks'
 import { h } from 'preact' /** @jsx h */
-import Title from './Title'
+import { useRef } from 'preact/hooks'
 import { Button, Input } from '@material-ui/core'
+import { WeatherService } from '../api/WeatherService'
+import Title from './Title'
+import MyPaper from './MyPaper'
 
-export default function CitySearch({cities, setCities}) {
+export default function CitySearch({cities, setCities, elevation}) {
   const cityInput = useRef(null)
   const stateInput = useRef(null)
 
@@ -23,7 +24,7 @@ export default function CitySearch({cities, setCities}) {
   }
   
   return (
-    <>
+    <MyPaper elevation={elevation}>
       <Title>Lookup a city</Title>
       <Input
         style={{ margin: '10px', padding: '5px' }}
@@ -40,6 +41,6 @@ export default function CitySearch({cities, setCities}) {
         inputRef={stateInput}
         placeholder="Enter a state" />
       <Button color="primary" size="large" onClick={onSubmit}>LOOKUP</Button>
-    </>
+    </MyPaper>
   )
 }

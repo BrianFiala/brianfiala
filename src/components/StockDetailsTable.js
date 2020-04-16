@@ -1,10 +1,11 @@
 import { h } from 'preact' /** @jsx h */
-import Title from './Title'
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core'
+import Title from './Title'
+import MyPaper from './MyPaper'
 
 export default function CityDetailsTable({stocks}) {
   return (
-    <>
+    <MyPaper>
       <Title>Stock details</Title>
       <Table size="small">
         <TableHead>
@@ -31,6 +32,6 @@ export default function CityDetailsTable({stocks}) {
             </TableRow> ))}
         </TableBody>
       </Table>
-    </>
+    </MyPaper>
   )
 }
