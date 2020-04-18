@@ -16,7 +16,7 @@ export default function CitySearch({cities, setCities, elevation}) {
     if (city && state) {
       const newCity = await WeatherService.getCurrentWeather(city, state)
       if (newCity) {
-        setCities([...cities, ...newCity ])
+        setCities([...cities, newCity ])
         cityInput.current.value = ''
         stateInput.current.value = ''
       }
