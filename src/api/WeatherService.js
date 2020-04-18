@@ -11,8 +11,7 @@ export const WeatherService = {
   },
   getCurrentWeather: async (cityName, state) => {
     let city = await WeatherService.parseCityInfo(cityName, state)
-    let cityWeather = {
-    }
+    let cityWeather = {}
     if (city.length) {
       cityWeather = {
         name: cityName,

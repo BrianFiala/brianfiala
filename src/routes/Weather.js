@@ -20,7 +20,7 @@ export default function Weather() {
       </Grid>
       {/* City search item */}
       <Grid item xs={12} md={3}>
-        <CitySearch cities={cities} setCities={setCities} elevation={cities.length ? 1 : 24} />
+        <CitySearch cities={cities} setCities={setCities} elevation={cities.length ? 1 : 16} />
       </Grid>
       {/* City details item */}
       {cities.length ?

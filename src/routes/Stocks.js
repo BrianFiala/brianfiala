@@ -27,7 +27,7 @@ export default function Stocks() {
         : null }
       {/* Symbol input item */}
       <Grid item xs={12} md={3}>
-        <StockSearch stocks={stocks} setStocks={setStocks} elevation={stocks.length ? 1 : 24} />
+        <StockSearch stocks={stocks} setStocks={setStocks} elevation={stocks.length ? 1 : 16} />
       </Grid>
       {/* Table item */}
       {stocks.length ?
