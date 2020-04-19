@@ -1,7 +1,6 @@
 import { h } from 'preact' /** @jsx h */
 import { useState } from 'preact/hooks'
 import 'typeface-roboto'
-import './styles'
 import defaults from './themes'
 import { CssBaseline } from '@material-ui/core'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
