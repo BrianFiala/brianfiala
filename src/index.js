@@ -3,9 +3,10 @@ import {useState} from 'preact/hooks'
 import 'typeface-roboto'
 import './styles'
 import defaults from './themes'
+import {StoreProvider} from './api/StoreProvider'
+import Layout from './components/layout'
 import {CssBaseline} from '@material-ui/core'
 import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
-import Layout from './components/layout/Layout'
 
 export default function App() {
   const [theme, setTheme] = useState(createMuiTheme(defaults))
@@ -20,7 +21,9 @@ export default function App() {
     <div id="app">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Layout toggleTheme={toggleTheme} />
+        <StoreProvider>
+          <Layout toggleTheme={toggleTheme} />
+        </StoreProvider>
       </ThemeProvider>
     </div>
   )

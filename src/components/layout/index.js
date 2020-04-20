@@ -1,6 +1,5 @@
 import {h} from 'preact' /** @jsx h */
 import {Router} from 'preact-router'
-import {StoreProvider} from '../../api/StoreProvider'
 import NotFound from '../../routes/NotFound'
 import Weather from '../../routes/Weather'
 import Stocks from '../../routes/Stocks'
@@ -42,21 +41,19 @@ export default function Layout({toggleTheme}) {
   
   return (
     <div className={classes.root}>
-      <StoreProvider>
-        <Header toggleTheme={toggleTheme} />
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container}>
-            <Router>
-              <Home path="/" />
-              <Weather path="/weather" />
-              <Stocks path="/stocks" />
-              <NotFound default />
-            </Router>
-            <Footer />
-          </Container>
-        </main>
-      </StoreProvider>
+      <Header toggleTheme={toggleTheme} />
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          <Router>
+            <Home path="/" />
+            <Weather path="/weather" />
+            <Stocks path="/stocks" />
+            <NotFound default />
+          </Router>
+          <Footer />
+        </Container>
+      </main>
     </div>
   )
 }
