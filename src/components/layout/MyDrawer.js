@@ -1,11 +1,11 @@
-import { h } from 'preact' /** @jsx h */
+import {h} from 'preact' /** @jsx h */
 import clsx from 'clsx'
-import { Drawer } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/styles'
+import {Drawer} from '@material-ui/core'
+import {makeStyles, useTheme} from '@material-ui/styles'
 import NavList from './NavList'
 
 const drawerWidth = 200
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   appBarSpacer: theme.mixins.toolbar,
   drawerPaper: {
     position: 'relative',
@@ -35,13 +35,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function MyDrawer({open}) {
-  const theme = useTheme()
-  const classes = useStyles(theme)
+  const classes = useStyles(useTheme())
 
   return (
     <Drawer
       variant="permanent"
-      classes={{ paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose) }}
+      classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)}}
       open={open}>
       <div className={classes.appBarSpacer} />
       <NavList />

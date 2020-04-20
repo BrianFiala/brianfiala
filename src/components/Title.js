@@ -1,10 +1,10 @@
-import { h } from 'preact' /** @jsx h */
+import {h} from 'preact' /** @jsx h */
 import Typography from '@material-ui/core/Typography'
 
-export default function Title(props) {
+export default function Title({children}) {
   return (
     <Typography component="h2" variant="h6" color="primary" gutterBottom>
-      {props.children}
+      {children}
     </Typography>
   )
 }

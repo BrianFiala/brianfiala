@@ -1,5 +1,5 @@
-import { h } from 'preact' /** @jsx h */
-import { Box, Typography, Link } from '@material-ui/core'
+import {h} from 'preact' /** @jsx h */
+import {Box, Typography, Link} from '@material-ui/core'
 
 export default function Footer() {
   return (

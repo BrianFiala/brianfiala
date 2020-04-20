@@ -1,14 +1,14 @@
-import { h } from 'preact' /** @jsx h */
-import { useState } from 'preact/hooks'
-import { Grid } from '@material-ui/core'
+import {h} from 'preact' /** @jsx h */
+import {useStore} from '../api/StoreProvider'
+import message from '../assets/message.txt'
 import CitySearch from '../components/CitySearch'
 import CityDetailsTable from '../components/CityDetailsTable'
 import InfoItem from '../components/InfoItem'
-import message from '../assets/message.txt'
+import {Grid} from '@material-ui/core'
 
 export default function Weather() {
-  const [ cities, setCities ] = useState([])
-
+  const {cities} = useStore()
+  
   return (
     <Grid container spacing={3}>
       {/* Info item */}
@@ -20,14 +20,14 @@ export default function Weather() {
       </Grid>
       {/* City search item */}
       <Grid item xs={12} md={3}>
-        <CitySearch cities={cities} setCities={setCities} elevation={cities.length ? 1 : 16} />
+        <CitySearch elevation={cities.length ? 1 : 16} />
       </Grid>
       {/* City details item */}
       {cities.length ?
         <Grid item xs={12} md={9}>
-          <CityDetailsTable cities={cities} />
+          <CityDetailsTable />
         </Grid>
-        : null }
+        : null}
     </Grid>
   )
 }

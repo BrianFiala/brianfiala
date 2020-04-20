@@ -1,6 +1,6 @@
-import { h } from 'preact' /** @jsx h */
-import { List, Link, ListItem, ListItemText, ListItemIcon } from '@material-ui/core'
-import { CloudOutlined, People, TrendingUp } from '@material-ui/icons'
+import {h} from 'preact' /** @jsx h */
+import {List, Link, ListItem, ListItemText, ListItemIcon} from '@material-ui/core'
+import {CloudOutlined, People, TrendingUp} from '@material-ui/icons'
 
 export default function NavList({callBack}) {
   return (

@@ -1,10 +1,10 @@
-import { h } from 'preact' /** @jsx h */
-import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/styles'
+import {h} from 'preact' /** @jsx h */
+import {AppBar, Toolbar, Typography, IconButton} from '@material-ui/core'
+import {makeStyles, useTheme} from '@material-ui/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import BrightnessIcon from '@material-ui/icons/Brightness4Outlined'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   toolbar: {
     paddingRight: theme.spacing(4)
   },
@@ -26,8 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function MyAppBar({menuCallback, toggleTheme}) {
-  const theme = useTheme()
-  const classes = useStyles(theme)
+  const classes = useStyles(useTheme())
 
   return (
     <AppBar color="primary" position="absolute" className={classes.appBar}>

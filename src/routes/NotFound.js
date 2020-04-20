@@ -1,5 +1,5 @@
-import { h } from 'preact' /** @jsx h */
-import { Grid } from '@material-ui/core'
+import {h} from 'preact' /** @jsx h */
+import {Grid} from '@material-ui/core'
 import InfoItem from '../components/InfoItem'
 import message from '../assets/message.txt'
 

@@ -1,8 +1,8 @@
-import { h } from 'preact' /** @jsx h */
-import { Paper } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/styles'
+import {h} from 'preact' /** @jsx h */
+import {Paper} from '@material-ui/core'
+import {makeStyles, useTheme} from '@material-ui/styles'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
@@ -12,11 +12,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function MyPaper(props) {  
-  const theme = useTheme()
-  const classes = useStyles(theme)
+export default function MyPaper({elevation, children}) {  
+  const classes = useStyles(useTheme())
 
   return (
-    <Paper elevation={props.elevation} className={classes.paper}>{props.children}</Paper>
+    <Paper elevation={elevation} className={classes.paper}>{children}</Paper>
   )
 }

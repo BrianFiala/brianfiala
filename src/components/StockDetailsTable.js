@@ -1,9 +1,12 @@
-import { h } from 'preact' /** @jsx h */
-import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core'
+import {h} from 'preact' /** @jsx h */
+import {useStore} from '../api/StoreProvider'
 import Title from './Title'
 import MyPaper from './MyPaper'
+import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
 
-export default function StockDetailsTable({stocks}) {
+export default function StockDetailsTable() {
+  const {stocks} = useStore()
+  
   return (
     <MyPaper>
       <Title>Stock details</Title>
@@ -19,7 +22,7 @@ export default function StockDetailsTable({stocks}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {stocks.map((stock) => (
+          {stocks.map(stock => (
             <TableRow key={stock.id}>
               <TableCell component="th" scope="row">
                 {stock.id}
@@ -29,7 +32,8 @@ export default function StockDetailsTable({stocks}) {
               <TableCell align="right">{stock.details.c.toFixed(2)}</TableCell>
               <TableCell align="right">{stock.details.h.toFixed(2)}</TableCell>
               <TableCell align="right">{stock.details.l.toFixed(2)}</TableCell>
-            </TableRow> ))}
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </MyPaper>

@@ -1,9 +1,12 @@
-import { h } from 'preact' /** @jsx h */
-import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core'
+import {h} from 'preact' /** @jsx h */
+import {useStore} from '../api/StoreProvider'
 import Title from './Title'
 import MyPaper from './MyPaper'
+import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
 
-export default function CityDetailsTable({cities}) {
+export default function CityDetailsTable() {
+  const {cities} = useStore()
+
   return (
     <MyPaper>
       <Title>City details</Title>
@@ -16,7 +19,6 @@ export default function CityDetailsTable({cities}) {
             <TableCell align="right">Feels like</TableCell>
           </TableRow>
         </TableHead>
-            
         <TableBody>
           {cities.map((city) => (
             <TableRow key={city.name}>
@@ -24,7 +26,8 @@ export default function CityDetailsTable({cities}) {
               <TableCell align="right">{city.current.weather[0].description}</TableCell>
               <TableCell align="right">{city.current.temp}</TableCell>
               <TableCell align="right">{city.current.feels_like}</TableCell>
-            </TableRow> ))}
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </MyPaper>

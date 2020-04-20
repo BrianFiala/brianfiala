@@ -1,14 +1,14 @@
-import { h } from 'preact' /** @jsx h */
-import { useState } from 'preact/hooks'
-import { Grid } from '@material-ui/core'
+import {h} from 'preact' /** @jsx h */
+import {useStore} from '../api/StoreProvider'
+import message from '../assets/message.txt'
 import MyResponsiveLine from '../components/ResponsiveLineGraph'
 import StockDetailsTable from '../components/StockDetailsTable'
 import StockSearch from '../components/StockSearch'
 import InfoItem from '../components/InfoItem'
-import message from '../assets/message.txt'
+import {Grid} from '@material-ui/core'
 
 export default function Stocks() {
-  const [stocks, setStocks] = useState([])
+  const {stocks} = useStore()
   
   return (
     <Grid container spacing={3}>
@@ -22,19 +22,19 @@ export default function Stocks() {
       {/* Graph item */}
       {stocks.length ?
         <Grid item xs={12}>
-          <MyResponsiveLine data={stocks} height="200px" width="400px" />
+          <MyResponsiveLine data={stocks} title="Timeseries" height="200px" width="100%" />
         </Grid>
-        : null }
+        : null}
       {/* Symbol input item */}
       <Grid item xs={12} md={3}>
-        <StockSearch stocks={stocks} setStocks={setStocks} elevation={stocks.length ? 1 : 16} />
+        <StockSearch elevation={stocks.length ? 1 : 16} />
       </Grid>
       {/* Table item */}
       {stocks.length ?
         <Grid item xs={12} md={9}>
-          <StockDetailsTable stocks={stocks} />
+          <StockDetailsTable />
         </Grid>
-        : null }
+        : null}
     </Grid>
   )
 }

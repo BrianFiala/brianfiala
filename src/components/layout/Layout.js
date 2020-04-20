@@ -1,15 +1,16 @@
-import { h } from 'preact' /** @jsx h */
-import { Container } from '@material-ui/core/'
-import { makeStyles, useTheme } from '@material-ui/styles'
-import { Router } from 'preact-router'
-import NotFound from '../../routes/NotFound.js'
+import {h} from 'preact' /** @jsx h */
+import {Router} from 'preact-router'
+import {StoreProvider} from '../../api/StoreProvider'
+import NotFound from '../../routes/NotFound'
 import Weather from '../../routes/Weather'
 import Stocks from '../../routes/Stocks'
 import Home from '../../routes/Home'
 import Header from './Header'
 import Footer from './Footer'
+import {makeStyles, useTheme} from '@material-ui/styles'
+import {Container} from '@material-ui/core/'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     height: '100%'
@@ -37,24 +38,25 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Layout({toggleTheme}) {
-  const theme = useTheme()
-  const classes = useStyles(theme)
-
+  const classes = useStyles(useTheme())
+  
   return (
     <div className={classes.root}>
-      <Header toggleTheme={toggleTheme} />
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Router>
-            <Home path="/" />
-            <Weather path="/weather" />
-            <Stocks path="/stocks" />
-            <NotFound default />
-          </Router>
-          <Footer />
-        </Container>
-      </main>
+      <StoreProvider>
+        <Header toggleTheme={toggleTheme} />
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Container maxWidth="lg" className={classes.container}>
+            <Router>
+              <Home path="/" />
+              <Weather path="/weather" />
+              <Stocks path="/stocks" />
+              <NotFound default />
+            </Router>
+            <Footer />
+          </Container>
+        </main>
+      </StoreProvider>
     </div>
   )
 }
