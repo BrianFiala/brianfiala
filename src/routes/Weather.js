@@ -1,5 +1,5 @@
 import {h} from 'preact' /** @jsx h */
-import {useStore} from '../api/StoreProvider'
+import {useStore} from '../api/StateProvider'
 import message from '../assets/message.txt'
 import CitySearch from '../components/CitySearch'
 import CityDetailsTable from '../components/CityDetailsTable'

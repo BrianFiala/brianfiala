@@ -1,38 +1,32 @@
 import {h} from 'preact' /** @jsx h */
-import {Router} from 'preact-router'
-import NotFound from '../../routes/NotFound'
-import Weather from '../../routes/Weather'
-import Stocks from '../../routes/Stocks'
-import Home from '../../routes/Home'
 import Header from './Header'
+import Main from './Main'
 import Footer from './Footer'
 import {makeStyles, useTheme} from '@material-ui/styles'
 import {Container} from '@material-ui/core/'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    height: '100%'
+    display: 'flex'
   },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    overflow: 'auto'
-  },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: `calc(100vh - ${theme.spacing(7)}px)`,
-    padding: theme.spacing(2),
+  viewportContainer: {
+    height: '100vh',
+    overflow: 'auto',
+    paddingTop: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      height: `calc(100vh - ${theme.spacing(8)}px)`,
-      padding: theme.spacing(3)
+      paddingTop: theme.spacing(8)
     }
   },
-  footerContainer: {
-    marginBottom: theme.spacing(2),
-    marginTop: theme.spacing(2)
+  contents: {
+    minHeight: '100%',
+    display: 'flex',
+    flexGrow: 1, // needed?
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(3)
+    }
   }
 }))
 
@@ -42,18 +36,12 @@ export default function Layout({toggleTheme}) {
   return (
     <div className={classes.root}>
       <Header toggleTheme={toggleTheme} />
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Router>
-            <Home path="/" />
-            <Weather path="/weather" />
-            <Stocks path="/stocks" />
-            <NotFound default />
-          </Router>
+      <Container disableGutters={true} className={classes.viewportContainer}>
+        <Container disableGutters={true} className={classes.contents}>
+          <Main />
           <Footer />
         </Container>
-      </main>
+      </Container>
     </div>
   )
 }

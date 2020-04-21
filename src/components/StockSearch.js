@@ -1,6 +1,6 @@
 import {h} from 'preact' /** @jsx h */
 import {useRef} from 'preact/hooks'
-import {useStore} from '../api/StoreProvider'
+import {useStore} from '../api/StateProvider'
 import {StockService} from '../api/StockService'
 import Title from './Title'
 import MyPaper from './MyPaper'

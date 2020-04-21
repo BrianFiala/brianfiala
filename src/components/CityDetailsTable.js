@@ -1,5 +1,5 @@
 import {h} from 'preact' /** @jsx h */
-import {useStore} from '../api/StoreProvider'
+import {useStore} from '../api/StateProvider'
 import Title from './Title'
 import MyPaper from './MyPaper'
 import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'

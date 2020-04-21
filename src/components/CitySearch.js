@@ -1,7 +1,7 @@
 import {h} from 'preact' /** @jsx h */
 import {useRef} from 'preact/hooks'
 import {Button, Input} from '@material-ui/core'
-import {useStore} from '../api/StoreProvider'
+import {useStore} from '../api/StateProvider'
 import {WeatherService} from '../api/WeatherService'
 import Title from './Title'
 import MyPaper from './MyPaper'

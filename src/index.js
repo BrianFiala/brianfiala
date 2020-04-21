@@ -2,8 +2,8 @@ import {h} from 'preact' /** @jsx h */
 import {useState} from 'preact/hooks'
 import 'typeface-roboto'
 import './styles'
-import defaults from './themes'
-import {StoreProvider} from './api/StoreProvider'
+import defaults from './theme'
+import {StateProvider} from './api/StateProvider'
 import Layout from './components/layout'
 import {CssBaseline} from '@material-ui/core'
 import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
@@ -21,9 +21,9 @@ export default function App() {
     <div id="app">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <StoreProvider>
+        <StateProvider>
           <Layout toggleTheme={toggleTheme} />
-        </StoreProvider>
+        </StateProvider>
       </ThemeProvider>
     </div>
   )
