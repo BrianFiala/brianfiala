@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex'
   },
-  viewportContainer: {
+  viewportFrame: {
     height: '100vh',
     overflow: 'auto',
     paddingTop: theme.spacing(7),
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   contents: {
     minHeight: '100%',
     display: 'flex',
-    flexGrow: 1, // needed?
+    // flexGrow: 1, // needed?
     flexDirection: 'column',
     justifyContent: 'space-between',
     padding: theme.spacing(2),
@@ -36,7 +36,7 @@ export default function Layout({toggleTheme}) {
   return (
     <div className={classes.root}>
       <Header toggleTheme={toggleTheme} />
-      <Container disableGutters={true} className={classes.viewportContainer}>
+      <Container disableGutters={true} className={classes.viewportFrame}>
         <Container disableGutters={true} className={classes.contents}>
           <Main />
           <Footer />

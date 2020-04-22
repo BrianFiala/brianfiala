@@ -24,7 +24,7 @@ export default function CitySearch({elevation}) {
       }
     }
   }
-  
+
   return (
     <MyPaper elevation={elevation}>
       <Title>Lookup a city</Title>
