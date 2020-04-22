@@ -1,7 +1,7 @@
 import {h} from 'preact' /** @jsx h */
 import {useStore} from '../api/StateProvider'
 import message from '../assets/message.txt'
-import MyResponsiveLine from '../components/ResponsiveLineGraph'
+import MyResponsiveLine from '../components/MyResponsiveLine'
 import StockDetailsTable from '../components/StockDetailsTable'
 import StockSearch from '../components/StockSearch'
 import InfoItem from '../components/InfoItem'
