@@ -5,7 +5,7 @@ import MyPaper from './MyPaper'
 
 export default function ResponsiveLineGraph({data, title, height, width}) {
   return (
-    <MyPaper scrollable={false}>
+    <MyPaper unscrollable={true}>
       {title ? 
         <Title>{title}</Title>
         : null}

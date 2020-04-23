@@ -2,20 +2,20 @@ import {h} from 'preact' /** @jsx h */
 import {Paper} from '@material-ui/core'
 import {makeStyles, useTheme} from '@material-ui/styles'
 
-const useStyles = makeStyles((theme, scrollable) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
-    overflow: scrollable ? 'auto' : 'visible',
+    overflow: 'auto',
     flexDirection: 'column',
     height: '100%'
   }
 }))
 
-export default function MyPaper({elevation, children, scrollable}) {  
-  const classes = useStyles(useTheme(), scrollable)
+export default function MyPaper({elevation, children, unscrollable}) {  
+  const classes = useStyles(useTheme())
 
   return (
-    <Paper elevation={elevation} className={classes.paper}>{children}</Paper>
+    <Paper elevation={elevation} style={{overflow: unscrollable ? 'visible' : 'auto'}} className={classes.paper}>{children}</Paper>
   )
 }
