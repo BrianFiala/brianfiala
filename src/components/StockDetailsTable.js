@@ -30,16 +30,14 @@ export default function StockDetailsTable() {
 
   function refreshStock(event, symbol) {
     event.preventDefault()
-    if (symbol.length) {
-      const duration = 'year'
-      StockService.fetchStockData(symbol, duration)
-        .then(newStockInfo => {
-          if (newStockDataIsValid(newStockInfo)) {
-            setStocks(mergedStockInfo(symbol, newStockInfo, stocks))
-          }
-        })
-        .catch(err => console.error('stock service error', err))
-    }
+    const duration = 'year'
+    StockService.fetchStockData(symbol, duration)
+      .then(newStockInfo => {
+        if (newStockDataIsValid(newStockInfo)) {
+          setStocks(mergedStockInfo(symbol, newStockInfo, stocks))
+        }
+      })
+      .catch(err => console.error('stock service error', err))
   }
 
   return (

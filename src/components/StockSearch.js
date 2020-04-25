@@ -37,7 +37,13 @@ export default function StockSearch({elevation}) {
         name="symbol"
         inputRef={symbolInput}
         placeholder="Enter a symbol" />
-      <Button color="primary" size="large" onClick={onSubmit}>fetch quote</Button>
+      <Button
+        color="primary"
+        aria-label="fetch quote"
+        size="large"
+        onClick={onSubmit}>
+        FETCH QUOTE
+      </Button>
     </MyPaper>
   )
 }
