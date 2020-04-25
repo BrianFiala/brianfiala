@@ -2,26 +2,10 @@ import {h} from 'preact' /** @jsx h */
 import {useRef} from 'preact/hooks'
 import {Button, Input} from '@material-ui/core'
 import {useStore} from '../api/StateProvider'
-import {WeatherService} from '../api/WeatherService'
+import WeatherService from '../api/WeatherService'
+import {mergedCityInfo} from '../utils/WeatherUtils'
 import Title from './Title'
 import MyPaper from './MyPaper'
-
-function mergedCityInfo(city, state, newCityInfo, cities) {
-  const newCities = [...cities]
-  let alreadyHasCity = false
-  for (let i = 0; i < newCities.length; ++i) {
-    if (city === newCities[i].name && state === newCities[i].state) {
-      newCities[i] = newCityInfo
-      alreadyHasCity = true
-      break
-    }
-  }
-  if (!alreadyHasCity) {
-    newCities.push(newCityInfo)
-  }
-
-  return newCities
-}
 
 export default function CitySearch({elevation}) {
   const {cities, setCities } = useStore()
@@ -60,7 +44,13 @@ export default function CitySearch({elevation}) {
         name="state"
         inputRef={stateInput}
         placeholder="Enter a state" />
-      <Button color="primary" size="large" onClick={onSubmit}>LOOKUP</Button>
+      <Button
+        color="primary"
+        aria-label="fetch weather"
+        size="large"
+        onClick={onSubmit}>
+        FETCH WEATHER
+      </Button>
     </MyPaper>
   )
 }

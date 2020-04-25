@@ -1,5 +1,5 @@
 const KEY = 'd4e4a060a1f951d7a177e5bdfc448049'
-export const WeatherService = {
+const WeatherService = {
   parseCityInfo: async (city, state) => {
     if (typeof city === 'string'  && typeof state === 'string') {
       const usaCities = await (await fetch('/assets/usa.city.list.json')).json()
@@ -29,3 +29,5 @@ export const WeatherService = {
     return cityWeather
   }
 }
+
+export default WeatherService
