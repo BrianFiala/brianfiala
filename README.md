@@ -1,10 +1,10 @@
-# preact material app
+# brianfiala.club
 
-Super performant `Material` app for preact world using [preact-material-components](https://github.com/prateekbh/preact-material-components)
+A sandbox app for experimenting with Material UI integration into a Preact X project. Visit http://brianfiala.club to see this live. Tip: use the develop route to see a demo of the graph and table components using static mock data. http://brianfiala.club/develop
 
 ## CLI Commands
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -17,5 +17,3 @@ npm run build
 # test the production build locally
 npm run serve
 ```
-
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
