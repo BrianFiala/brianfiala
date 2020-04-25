@@ -6,7 +6,11 @@ import Title from './Title'
 import MyPaper from './MyPaper'
 import {Button, Input} from '@material-ui/core'
 
-function transformStock(symbol, stock) {
+function transformStock(symbol, newStockInfo) {
+  const stock = {
+    details: newStockInfo[0],
+    timeseries: newStockInfo[1]
+  }
   let stockTimeseries = []
   for (let i = 0; i < stock.timeseries.c.length; ++i) {
     stockTimeseries.push({
@@ -22,6 +26,36 @@ function transformStock(symbol, stock) {
   }
 }
 
+function fecthData(symbol, duration) {
+  return Promise.all([
+    StockService.getStockDetails(symbol),
+    StockService.getStockTimeseries(symbol, duration)
+  ])
+}
+
+function newDataIsValid(newStockInfo) {
+  return newStockInfo.length === 2 && newStockInfo[0].pc
+  && newStockInfo[1].s === 'ok' && newStockInfo[1].c.length
+}
+
+function mergedStockInfo(symbol, newStockInfo, stocks) {
+  const newStock = transformStock(symbol, newStockInfo)
+  const newStocks = [...stocks]
+  let alreadyHasStock = false
+  for (let i = 0; i < newStocks.length; ++i) {
+    if (newStocks[i].id === symbol) {
+      newStocks[i] = newStock
+      alreadyHasStock = true
+      break
+    }
+  }
+  if (!alreadyHasStock) {
+    newStocks.push(newStock)
+  }
+
+  return newStocks
+}
+
 export default function StockSearch({elevation}) {
   const {stocks, setStocks} = useStore()
   const symbolInput = useRef(null)
@@ -29,22 +63,12 @@ export default function StockSearch({elevation}) {
   async function onSubmit(event) {
     event.preventDefault()
     const symbol = symbolInput.current.value.toUpperCase()
-    const duration = 'year'
     if (symbol.length) {
-      Promise.all([
-        StockService.getStockDetails(symbol),
-        StockService.getStockTimeseries(symbol, duration)
-      ])
-        .then(responses => {
-          if (responses.length === 2 && responses[0].pc
-            && responses[1].s === 'ok' && responses[1].c.length) {
-            setStocks([
-              ...stocks,
-              transformStock(symbol, {
-                details: responses[0],
-                timeseries: responses[1]
-              })
-            ])
+      const duration = 'year'
+      fecthData(symbol, duration)
+        .then(newStockInfo => {
+          if (newDataIsValid(newStockInfo)) {
+            setStocks(mergedStockInfo(symbol, newStockInfo, stocks))
             symbolInput.current.value = ''
           }
         })
