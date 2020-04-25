@@ -6,6 +6,23 @@ import {WeatherService} from '../api/WeatherService'
 import Title from './Title'
 import MyPaper from './MyPaper'
 
+function mergedCityInfo(city, state, newCityInfo, cities) {
+  const newCities = [...cities]
+  let alreadyHasCity = false
+  for (let i = 0; i < newCities.length; ++i) {
+    if (city === newCities[i].name && state === newCities[i].state) {
+      newCities[i] = newCityInfo
+      alreadyHasCity = true
+      break
+    }
+  }
+  if (!alreadyHasCity) {
+    newCities.push(newCityInfo)
+  }
+
+  return newCities
+}
+
 export default function CitySearch({elevation}) {
   const {cities, setCities } = useStore()
   const cityInput = useRef(null)
@@ -16,9 +33,10 @@ export default function CitySearch({elevation}) {
     const city = cityInput.current.value.toUpperCase()
     const state = stateInput.current.value.toUpperCase()
     if (city && state) {
-      const newCity = await WeatherService.getCurrentWeather(city, state)
-      if (newCity.name) {
-        setCities([...cities, newCity ])
+      const newCityInfo = await WeatherService.getCurrentWeather(city, state)
+      if (newCityInfo.name) {
+        const newCities = mergedCityInfo(city, state, newCityInfo, cities)
+        setCities(newCities)
         cityInput.current.value = ''
         stateInput.current.value = ''
       }
