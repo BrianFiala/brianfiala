@@ -17,9 +17,6 @@ const useStyles = makeStyles(theme => ({
       marginRight: theme.spacing(6)
     }
   },
-  settingsButton: {
-    marginRight: -theme.spacing(1) - 4
-  },
   title: {
     flexGrow: 1
   }
@@ -34,7 +31,7 @@ export default function MyAppBar({menuCallback, toggleTheme}) {
         <IconButton
           edge="start"
           color="inherit"
-          aria-label="open drawer"
+          aria-label="expand menu"
           onClick={menuCallback}
           className={classes.menuButton}>
           <MenuIcon />
@@ -42,7 +39,11 @@ export default function MyAppBar({menuCallback, toggleTheme}) {
         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
           Widgety Dashboard
         </Typography>
-        <IconButton color="inherit" className={classes.settingsButton} onClick={toggleTheme}>
+        <IconButton
+          edge="end"
+          color="inherit"
+          aria-label="toggle theme"
+          onClick={toggleTheme}>
           <BrightnessIcon />
         </IconButton>
       </Toolbar>
