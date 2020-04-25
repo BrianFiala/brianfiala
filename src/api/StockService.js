@@ -5,7 +5,7 @@ const ONE_YEAR = ONE_WEEK * 52
 const THREE_YEARS = ONE_YEAR * 3
 const API_KEY = 'bq18qvfrh5refsdeb8hg'
 
-export const StockService = {
+const StockService = {
   getStockTimeseries: async (symbol, duration) => {
     let start, resolution
     let stock = {}
@@ -42,6 +42,7 @@ export const StockService = {
 
     return stock
   },
+
   getStockDetails: async (symbol) => {
     let stock = {}
     if (symbol) {
@@ -54,5 +55,14 @@ export const StockService = {
     }
 
     return stock
+  },
+
+  fetchStockData: (symbol, duration) => {
+    return Promise.all([
+      StockService.getStockDetails(symbol),
+      StockService.getStockTimeseries(symbol, duration)
+    ])
   }
 }
+
+export default StockService
