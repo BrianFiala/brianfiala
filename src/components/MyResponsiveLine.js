@@ -1,11 +1,24 @@
 import {h} from 'preact' /** @jsx h */
+import {useTheme} from '@material-ui/styles'
 import {ResponsiveLine} from '@nivo/line'
 import Title from './Title'
 import MyPaper from './MyPaper'
 
 export default function ResponsiveLineGraph({data, title, height, width}) {
+  const theme = useTheme()
+  theme.tooltip = {
+    container: {
+      background: theme.palette.background.paper,
+      color: theme.palette.text.primary,
+      fontSize: 'inherit',
+      borderRadius: theme.shape.borderRadius,
+      boxShadow: theme.shadows[4],
+      padding: theme.spacing(1)
+    }
+  }
+
   return (
-    <MyPaper scrollable={false}>
+    <MyPaper unscrollable={true}>
       {title ? 
         <Title>{title}</Title>
         : null}
@@ -14,6 +27,7 @@ export default function ResponsiveLineGraph({data, title, height, width}) {
         width
       }}>
         <ResponsiveLine
+          theme={theme}
           data={data}
           margin={{
             top: 30,
