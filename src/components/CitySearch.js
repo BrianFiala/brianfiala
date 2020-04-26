@@ -1,11 +1,11 @@
 import {h} from 'preact' /** @jsx h */
 import {useRef} from 'preact/hooks'
-import {Button, Input} from '@material-ui/core'
-import {useStore} from '../api/StateProvider'
+import {useStore} from '../api/StoreProvider'
 import WeatherService from '../api/WeatherService'
 import {mergedCityInfo} from '../utils/WeatherUtils'
 import Title from './Title'
 import MyPaper from './MyPaper'
+import {Button, Input} from '@material-ui/core'
 
 export default function CitySearch({elevation}) {
   const {cities, setCities } = useStore()

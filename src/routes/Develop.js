@@ -1,13 +1,13 @@
 import {h} from 'preact' /** @jsx h */
-import {Grid} from '@material-ui/core'
-import {useStore} from '../api/StateProvider'
 import devCities from '../assets/sample-cities.json'
 import devStocks from '../assets/sample-stocks.json'
+import {useStore} from '../api/StoreProvider'
 import MyResponsiveLine from '../components/MyResponsiveLine'
 import StockSearch from '../components/StockSearch'
 import StockDetailsTable from '../components/StockDetailsTable'
 import CitySearch from '../components/CitySearch'
 import CityDetailsTable from '../components/CityDetailsTable'
+import {Grid} from '@material-ui/core'
 
 export default function Develop() {
   const {cities, setCities, stocks, setStocks } = useStore()

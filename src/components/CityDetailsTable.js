@@ -1,35 +1,26 @@
 import {h} from 'preact' /** @jsx h */
-import {useStore} from '../api/StateProvider'
+import {useStore} from '../api/StoreProvider'
 import WeatherService from '../api/WeatherService'
 import {mergedCityInfo} from '../utils/WeatherUtils'
 import Title from './Title'
 import MyPaper from './MyPaper'
-import {makeStyles, useTheme} from '@material-ui/styles'
-import TrashIcon from '@material-ui/icons/DeleteOutlined'
-import RefreshIcon from '@material-ui/icons/RefreshOutlined'
-import {Container, IconButton, Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
-
-const useStyles = makeStyles(theme => ({
-  iconButton: {
-    paddingLeft: theme.spacing(1)
-  },
-  actionIconContainer: {
-    display: 'flex'
-  }
-}))
+import TableActions from './TableActions'
+import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
 
 export default function CityDetailsTable() {
   const {cities, setCities} = useStore()
-  const classes = useStyles(useTheme())
 
-  function removeCity(event, cityName, state) {
+  function removeCity(event, cityState) {
     event.preventDefault()
-    const newCities = cities.filter(city => cityName !== city.name || state !== city.state)
+    const newCities = cities.filter(city => `${city.name},${city.state}` !== cityState)
     setCities(newCities)
   }
 
-  async function refreshCity(event, city, state) {
+  async function refreshCity(event, cityState) {
     event.preventDefault()
+    const cityAndState = cityState.split(',')
+    const city = cityAndState[0]
+    const state = cityAndState[1]
     const newCityInfo = await WeatherService.getCurrentWeather(city, state)
     if (newCityInfo.name) {
       const newCities = mergedCityInfo(city, state, newCityInfo, cities)
@@ -54,24 +45,10 @@ export default function CityDetailsTable() {
           {cities.map((city) => (
             <TableRow key={city.name}>
               <TableCell component="th" scope="row">
-                <Container
-                  disableGutters={true}
-                  className={classes.actionIconContainer}>
-                  <IconButton
-                    edge="start"
-                    aria-label="remove"
-                    className={classes.iconButton}
-                    onClick={(event) => {removeCity(event, city.name, city.state)}}>
-                    <TrashIcon />
-                  </IconButton>
-                  <IconButton
-                    edge="start"
-                    aria-label="refresh"
-                    className={classes.iconButton}
-                    onClick={(event) => {refreshCity(event, city.name, city.state)}}>
-                    <RefreshIcon />
-                  </IconButton>
-                </Container>
+                <TableActions
+                  identifier={`${city.name},${city.state}`}
+                  removeCallback={removeCity}
+                  refreshCallback={refreshCity} />
               </TableCell>
               <TableCell scope="row">{city.name}, {city.state}</TableCell>
               <TableCell align="right">{city.current.weather[0].description}</TableCell>

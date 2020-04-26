@@ -1,12 +1,11 @@
 import {h} from 'preact' /** @jsx h */
-import {Paper} from '@material-ui/core'
 import {makeStyles, useTheme} from '@material-ui/styles'
+import {Paper} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
-    overflow: 'auto',
     flexDirection: 'column',
     height: '100%'
   }

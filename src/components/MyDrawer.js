@@ -1,8 +1,8 @@
 import {h} from 'preact' /** @jsx h */
 import clsx from 'clsx'
-import {Drawer} from '@material-ui/core'
-import {makeStyles, useTheme} from '@material-ui/styles'
 import NavList from './NavList'
+import {makeStyles, useTheme} from '@material-ui/styles'
+import {Drawer} from '@material-ui/core'
 
 const drawerWidth = 200
 const useStyles = makeStyles(theme => ({
