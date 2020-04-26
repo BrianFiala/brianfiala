@@ -1,8 +1,8 @@
 import {h} from 'preact' /** @jsx h */
 import {useRef} from 'preact/hooks'
-import {useStore} from '../api/StateProvider'
-import {mergedStockInfo, newStockDataIsValid} from '../utils/StockUtils'
+import {useStore} from '../api/StoreProvider'
 import StockService from '../api/StockService'
+import {mergedStockInfo, newStockDataIsValid} from '../utils/StockUtils'
 import Title from './Title'
 import MyPaper from './MyPaper'
 import {Button, Input} from '@material-ui/core'

@@ -1,8 +1,9 @@
 import {h} from 'preact' /** @jsx h */
-import {useTheme} from '@material-ui/styles'
 import {ResponsiveLine} from '@nivo/line'
 import Title from './Title'
 import MyPaper from './MyPaper'
+import {useTheme} from '@material-ui/styles'
+import {Container} from '@material-ui/core'
 
 export default function ResponsiveLineGraph({data, title, height, width}) {
   const theme = useTheme()
@@ -19,9 +20,11 @@ export default function ResponsiveLineGraph({data, title, height, width}) {
 
   return (
     <MyPaper unscrollable={true}>
-      {title ? 
-        <Title>{title}</Title>
-        : null}
+      <Container disableGutters>
+        {title ? 
+          <Title>{title}</Title>
+          : null}
+      </Container>
       <section style={{
         height,
         width
@@ -31,9 +34,9 @@ export default function ResponsiveLineGraph({data, title, height, width}) {
           data={data}
           margin={{
             top: 30,
-            right: 20,
+            right: 0,
             bottom: 40,
-            left: 20
+            left: 0
           }}
           xScale={{type: 'point'}}
           yScale={{

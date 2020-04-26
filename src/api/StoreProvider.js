@@ -1,22 +1,22 @@
 import {createContext, h} from 'preact' /** @jsx h */
 import {useState, useContext} from 'preact/hooks'
 
-export const StateContext = createContext()
+export const StoreContext = createContext()
 
-export const StateProvider = ({children}) => {
+export const StoreProvider = ({children}) => {
   const [cities, setCities] = useState([])
   const [stocks, setStocks] = useState([])
 
   return (
-    <StateContext.Provider value={{
+    <StoreContext.Provider value={{
       stocks,
       setStocks,
       cities,
       setCities
     }}>
       {children}
-    </StateContext.Provider>
+    </StoreContext.Provider>
   )
 }
 
-export const useStore = () => useContext(StateContext)
+export const useStore = () => useContext(StoreContext)

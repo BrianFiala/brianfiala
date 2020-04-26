@@ -13,10 +13,15 @@ export default function Footer() {
 
   return (
     <footer className={classes.footerContainer}>
-      <Typography variant="body2" color="textSecondary" align="center">
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        align="center">
         {'Copyright © '}
-        <Link color="inherit" href="http://brianfiala.club/">
-            Brian Fiala
+        <Link
+          color="inherit"
+          href="http://brianfiala.club/">
+          Brian Fiala
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}

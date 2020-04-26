@@ -1,6 +1,6 @@
 import {h} from 'preact' /** @jsx h */
 import {Router} from 'preact-router'
-import {StateProvider} from '../../api/StateProvider'
+import {StoreProvider} from '../../api/StoreProvider'
 import NotFound from '../../routes/NotFound'
 import Weather from '../../routes/Weather'
 import Stocks from '../../routes/Stocks'
@@ -9,7 +9,7 @@ import Develop from '../../routes/Develop'
 
 export default function Main() {  
   return (
-    <StateProvider>
+    <StoreProvider>
       <Router>
         <Home path="/" />
         <Weather path="/weather" />
@@ -17,6 +17,6 @@ export default function Main() {
         <Develop path="/develop" />
         <NotFound default />
       </Router>
-    </StateProvider>
+    </StoreProvider>
   )
 }
