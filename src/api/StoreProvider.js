@@ -6,7 +6,13 @@ export const StoreContext = createContext()
 export const StoreProvider = ({children}) => {
   const [cities, setCities] = useState([])
   const [stocks, setStocks] = useState([])
-  const [duration, setDuration] = useState("month")
+  // const [stocks, setStocks] = useState({
+  //   week: [],
+  //   month: [],
+  //   year: [],
+  //   threeYears: []
+  // })
+  const [timeframe, setTimeframe] = useState("month")
   const [type, setType] = useState("actual")
 
   return (
@@ -15,8 +21,8 @@ export const StoreProvider = ({children}) => {
       setStocks,
       cities,
       setCities,
-      duration,
-      setDuration,
+      timeframe,
+      setTimeframe,
       type,
       setType
     }}>

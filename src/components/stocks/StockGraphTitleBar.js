@@ -34,14 +34,14 @@ const useStyles = makeStyles(theme => {
 export default function StockGraphTitleBar() {
   const classes = useStyles(useTheme())
   const [anchorEl, setAnchorEl] = useState(null)
-  const {duration, setDuration, type, setType} = useStore()
+  const {timeframe, setTimeframe, type, setType} = useStore()
 
   function handleClose() {
     setAnchorEl(null)
   }
 
-  function handleDurationChange() {
-    setDuration(event.target.value)
+  function handleTimeframeChange() {
+    setTimeframe(event.target.value)
     handleClose()
   }
 
@@ -77,7 +77,7 @@ export default function StockGraphTitleBar() {
         <Container disableGutters className={classes.menu}>
           <FormControl component="fieldset">
             <FormLabel component="legend" className={classes.legend}>Timeframe</FormLabel>
-            <RadioGroup aria-label="duration" name="duration" value={duration} onChange={handleDurationChange}>
+            <RadioGroup aria-label="timeframe" name="timeframe" value={timeframe} onChange={handleTimeframeChange}>
               <FormControlLabel className={classes.field} value="week" control={<Radio color="primary" />} label="Week" />
               <FormControlLabel className={classes.field} value="month" control={<Radio color="primary" />} label="Month" />
               <FormControlLabel className={classes.field} value="year" control={<Radio color="primary" />} label="Year" />

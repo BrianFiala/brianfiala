@@ -12,6 +12,22 @@ export const transformStock = (symbol, newStockInfo) => {
   }
     
   return {
+    // week: {
+    //   id: symbol,
+    //   data: stockTimeseries  
+    // },
+    // month: {
+    //   id: symbol,
+    //   data: stockTimeseries  
+    // },
+    // year: {
+    //   id: symbol,
+    //   data: stockTimeseries  
+    // },
+    // threeYears: {
+    //   id: symbol,
+    //   data: stockTimeseries  
+    // },
     id: symbol,
     data: stockTimeseries,
     details: stock.details
