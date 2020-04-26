@@ -1,10 +1,10 @@
 import {h} from 'preact' /** @jsx h */
-import {useStore} from '../api/StoreProvider'
-import StockService from '../api/StockService'
-import {mergedStockInfo, newStockDataIsValid} from '../utils/StockUtils'
-import Title from './Title'
-import MyPaper from './MyPaper'
-import TableActions from './TableActions'
+import {useStore} from '../../api/StoreProvider'
+import StockService from '../../api/StockService'
+import {mergedStockInfo, newStockDataIsValid} from '../../utils/StockUtils'
+import Title from '../Title'
+import MyPaper from '../MyPaper'
+import TableActions from '../TableActions'
 import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
 
 export default function StockDetailsTable() {
@@ -18,8 +18,7 @@ export default function StockDetailsTable() {
 
   function refreshStock(event, symbol) {
     event.preventDefault()
-    const duration = 'year'
-    StockService.fetchStockData(symbol, duration)
+    StockService.fetchStockData(symbol)
       .then(newStockInfo => {
         if (newStockDataIsValid(newStockInfo)) {
           setStocks(mergedStockInfo(symbol, newStockInfo, stocks))
@@ -46,7 +45,7 @@ export default function StockDetailsTable() {
         <TableBody>
           {stocks.map(stock => (
             <TableRow key={stock.id}>
-              <TableCell component="th" scope="row">
+              <TableCell scope="row">
                 <TableActions 
                   identifier={stock.id}
                   removeCallback={removeStock}

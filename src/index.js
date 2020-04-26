@@ -4,8 +4,8 @@ import 'typeface-roboto'
 import './styles'
 import defaults from './theme'
 import Layout from './components/layout'
-import {CssBaseline} from '@material-ui/core'
 import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
+import {CssBaseline} from '@material-ui/core'
 
 export default function App() {
   const [theme, setTheme] = useState(createMuiTheme(defaults))

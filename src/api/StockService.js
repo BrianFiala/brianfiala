@@ -35,10 +35,10 @@ const StockService = {
     return stock
   },
 
-  fetchStockData: (symbol, duration) => {
+  fetchStockData: (symbol) => {
     return Promise.all([
       StockService.getStockDetails(symbol),
-      StockService.getStockTimeseries(symbol, duration)
+      StockService.getStockTimeseries(symbol)
     ])
   }
 }

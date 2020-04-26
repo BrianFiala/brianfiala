@@ -1,10 +1,10 @@
 import {h} from 'preact' /** @jsx h */
-import {useStore} from '../api/StoreProvider'
-import WeatherService from '../api/WeatherService'
-import {mergedCityInfo} from '../utils/WeatherUtils'
-import Title from './Title'
-import MyPaper from './MyPaper'
-import TableActions from './TableActions'
+import {useStore} from '../../api/StoreProvider'
+import WeatherService from '../../api/WeatherService'
+import {mergedCityInfo} from '../../utils/WeatherUtils'
+import Title from '../Title'
+import MyPaper from '../MyPaper'
+import TableActions from '../TableActions'
 import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
 
 export default function CityDetailsTable() {
@@ -44,7 +44,7 @@ export default function CityDetailsTable() {
         <TableBody>
           {cities.map((city) => (
             <TableRow key={city.name}>
-              <TableCell component="th" scope="row">
+              <TableCell scope="row">
                 <TableActions
                   identifier={`${city.name},${city.state}`}
                   removeCallback={removeCity}

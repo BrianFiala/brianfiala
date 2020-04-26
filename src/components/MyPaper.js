@@ -15,6 +15,11 @@ export default function MyPaper({elevation, children, unscrollable}) {
   const classes = useStyles(useTheme())
 
   return (
-    <Paper elevation={elevation} style={{overflow: unscrollable ? 'visible' : 'auto'}} className={classes.paper}>{children}</Paper>
+    <Paper
+      elevation={elevation}
+      style={{overflow: unscrollable ? 'visible' : 'auto'}}
+      className={classes.paper}>
+      {children}
+    </Paper>
   )
 }
