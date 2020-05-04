@@ -18,7 +18,7 @@ export default function Stocks() {
           title="Welcome to stocks route"
           message={message} />
       </Grid>
-      {stocks.length ?
+      {stocks.details.length ?
         <Grid item xs={12}>
           <MyStockGraph />
         </Grid>
@@ -26,7 +26,7 @@ export default function Stocks() {
       <Grid item xs={12} md={3}>
         <StockSearch />
       </Grid>
-      {stocks.length ?
+      {stocks.details.length ?
         <Grid item xs={12} md={9}>
           <StockDetailsTable />
         </Grid>

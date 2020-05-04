@@ -13,8 +13,7 @@ export default function MyGraph() {
       <MyResponsiveLine
         height="200px"
         width="100%"
-        data={stocks} />
-      {/* data={stocks[timeframe]} /> */}
+        data={stocks[timeframe]} />
     </MyPaper>
   )
 }

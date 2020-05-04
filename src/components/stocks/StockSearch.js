@@ -15,8 +15,7 @@ export default function StockSearch() {
     event.preventDefault()
     const symbol = symbolInput.current.value.toUpperCase()
     if (symbol.length) {
-      const duration = 'year'
-      StockService.fetchStockData(symbol, duration)
+      StockService.fetchStockData(symbol)
         .then(newStockInfo => {
           if (newStockDataIsValid(newStockInfo)) {
             setStocks(mergedStockInfo(symbol, newStockInfo, stocks))
@@ -28,7 +27,7 @@ export default function StockSearch() {
   }
   
   return (
-    <MyPaper elevation={stocks.length ? 1 : 16}>
+    <MyPaper elevation={stocks.details.length ? 1 : 16}>
       <Title>Lookup a stock</Title>
       <Input
         style={{margin: '10px', padding: '5px' }}

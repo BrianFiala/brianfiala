@@ -12,11 +12,11 @@ import {Grid} from '@material-ui/core'
 export default function Develop() {
   const {cities, setCities, stocks, setStocks } = useStore()
   if (!cities.length) setCities(devCities)
-  if (!stocks.length) setStocks(devStocks)
+  // if (!stocks.length) setStocks(devStocks)
 
   return (
     <Grid container spacing={3}>
-      {stocks.length ?
+      {stocks.details.length ?
         <Grid item xs={12}>
           <MyStockGraph />
         </Grid>
@@ -24,7 +24,7 @@ export default function Develop() {
       <Grid item xs={12} md={3}>
         <StockSearch />
       </Grid>
-      {stocks.length ?
+      {stocks.details.length ?
         <Grid item xs={12} md={9}>
           <StockDetailsTable />
         </Grid>

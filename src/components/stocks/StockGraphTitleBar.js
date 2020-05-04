@@ -81,7 +81,7 @@ export default function StockGraphTitleBar() {
               <FormControlLabel className={classes.field} value="week" control={<Radio color="primary" />} label="Week" />
               <FormControlLabel className={classes.field} value="month" control={<Radio color="primary" />} label="Month" />
               <FormControlLabel className={classes.field} value="year" control={<Radio color="primary" />} label="Year" />
-              <FormControlLabel className={classes.field} value="threeYears" control={<Radio color="primary" />} label="Three Years" />
+              <FormControlLabel className={classes.field} value="threeYear" control={<Radio color="primary" />} label="Three Years" />
             </RadioGroup>
           </FormControl>
           <Divider className={classes.divider} />

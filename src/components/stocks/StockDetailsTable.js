@@ -10,10 +10,16 @@ import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/cor
 export default function StockDetailsTable() {
   const {stocks, setStocks} = useStore()
 
+  // TODO: test this
   function removeStock(event, symbol) {
     event.preventDefault()
-    const newStocks = stocks.filter(stock => stock.id !== symbol)
-    setStocks(newStocks)
+    setStocks({
+      details: stocks.details.filter(stock => stock.id !== symbol),
+      week: stocks.week.filter(stock => stock.id !== symbol),
+      month: stocks.month.filter(stock => stock.id !== symbol),
+      year: stocks.year.filter(stock => stock.id !== symbol),
+      threeYear: stocks.threeYear.filter(stock => stock.id !== symbol)
+    })
   }
 
   function refreshStock(event, symbol) {
@@ -43,7 +49,7 @@ export default function StockDetailsTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {stocks.map(stock => (
+          {stocks.details.map(stock => (
             <TableRow key={stock.id}>
               <TableCell scope="row">
                 <TableActions 
