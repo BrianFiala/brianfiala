@@ -7,15 +7,10 @@ import {Container} from '@material-ui/core/'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex'
-  },
-  viewportFrame: {
-    height: '100vh',
-    overflow: 'auto',
-    paddingTop: theme.spacing(7),
-    [theme.breakpoints.up('sm')]: {
-      paddingTop: theme.spacing(8)
-    }
+    display: 'flex',
+    // TODO: can I remove the following lines?
+    width: '100%',
+    minHeight: '100%'
   },
   contents: {
     minHeight: '100%',
@@ -26,7 +21,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       padding: theme.spacing(3)
     }
-  }
+  },
+  appBarSpacer: theme.mixins.toolbar
 }))
 
 export default function Layout({toggleTheme}) {
@@ -35,9 +31,8 @@ export default function Layout({toggleTheme}) {
   return (
     <div className={classes.root}>
       <Header toggleTheme={toggleTheme} />
-      <Container
-        disableGutters
-        className={classes.viewportFrame}>
+      <Container disableGutters>
+        <div className={classes.appBarSpacer} />
         <Container
           disableGutters
           className={classes.contents}>

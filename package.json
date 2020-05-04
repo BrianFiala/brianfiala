@@ -7,7 +7,7 @@
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "build": "preact build --dest htdocs",
+    "build": "preact build",
     "serve": "preact build && sirv build --cors --single",
     "dev": "preact watch",
     "lint": "eslint src",
@@ -64,7 +64,6 @@
     "preact-context-provider": "^2.0.0-preactx.2",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
-    "recharts": "^1.8.5",
     "typeface-roboto": "0.0.75"
   },
   "jest": {

@@ -4,46 +4,38 @@ import NavList from './NavList'
 import {makeStyles, useTheme} from '@material-ui/styles'
 import {Drawer} from '@material-ui/core'
 
-const drawerWidth = 200
 const useStyles = makeStyles(theme => ({
   appBarSpacer: theme.mixins.toolbar,
   drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    
+    width: 160,
+    [theme.breakpoints.up('sm')]: {
+      width: 200
+    },
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
-    }),
-    padding: theme.spacing(0),
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(1)
-    }
+    })
   },
   drawerPaperClose: {
     overflowX: 'hidden',
+    width: 0,
+    border: 0,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9)
-    }
+    })
   }
 }))
 
-export default function MyDrawer({open}) {
+export default function MyDrawer({open, toggleDrawer}) {
   const classes = useStyles(useTheme())
 
   return (
     <Drawer
-      variant="permanent"
       classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)}}
       open={open}>
       <div className={classes.appBarSpacer} />
-      <NavList />
+      <NavList callback={toggleDrawer} />
     </Drawer>
   )
 }
