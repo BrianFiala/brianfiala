@@ -1,13 +1,13 @@
 import {h} from 'preact' /** @jsx h */
 import {useRef} from 'preact/hooks'
-import {useStore} from '../api/StoreProvider'
-import StockService from '../api/StockService'
-import {mergedStockInfo, newStockDataIsValid} from '../utils/StockUtils'
-import Title from './Title'
-import MyPaper from './MyPaper'
+import {useStore} from '../../api/StoreProvider'
+import StockService from '../../api/StockService'
+import {mergedStockInfo, newStockDataIsValid} from '../../utils/StockUtils'
+import Title from '../Title'
+import MyPaper from '../MyPaper'
 import {Button, Input} from '@material-ui/core'
 
-export default function StockSearch({elevation}) {
+export default function StockSearch() {
   const {stocks, setStocks} = useStore()
   const symbolInput = useRef(null)
 
@@ -15,8 +15,7 @@ export default function StockSearch({elevation}) {
     event.preventDefault()
     const symbol = symbolInput.current.value.toUpperCase()
     if (symbol.length) {
-      const duration = 'year'
-      StockService.fetchStockData(symbol, duration)
+      StockService.fetchStockData(symbol)
         .then(newStockInfo => {
           if (newStockDataIsValid(newStockInfo)) {
             setStocks(mergedStockInfo(symbol, newStockInfo, stocks))
@@ -28,7 +27,7 @@ export default function StockSearch({elevation}) {
   }
   
   return (
-    <MyPaper elevation={elevation}>
+    <MyPaper elevation={stocks.details.length ? 1 : 16}>
       <Title>Lookup a stock</Title>
       <Input
         style={{margin: '10px', padding: '5px' }}

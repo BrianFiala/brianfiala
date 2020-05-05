@@ -1,11 +1,8 @@
 import {h} from 'preact' /** @jsx h */
 import {ResponsiveLine} from '@nivo/line'
-import Title from './Title'
-import MyPaper from './MyPaper'
 import {useTheme} from '@material-ui/styles'
-import {Container} from '@material-ui/core'
 
-export default function ResponsiveLineGraph({data, title, height, width}) {
+export default function ResponsiveLineGraph({data, height, width}) {
   const theme = useTheme()
   theme.tooltip = {
     container: {
@@ -19,69 +16,62 @@ export default function ResponsiveLineGraph({data, title, height, width}) {
   }
 
   return (
-    <MyPaper unscrollable={true}>
-      <Container disableGutters>
-        {title ? 
-          <Title>{title}</Title>
-          : null}
-      </Container>
-      <section style={{
-        height,
-        width
-      }}>
-        <ResponsiveLine
-          theme={theme}
-          data={data}
-          margin={{
-            top: 30,
-            right: 0,
-            bottom: 40,
-            left: 0
-          }}
-          xScale={{type: 'point'}}
-          yScale={{
-            type: 'linear',
-            min: 0,
-            max: 'auto',
-            stacked: false,
-            reverse: false
-          }}
-          curve="natural"
-          axisTop={null}
-          axisRight={null}
-          axisBottom={null}
-          axisLeft={null}
-          enableGridX={false}
-          enableGridY={false}
-          colors={{scheme: 'spectral'}}
-          enablePoints={false}
-          enableArea={true}
-          areaOpacity={0.15}
-          enableSlices="x"
-          legends={[{
-            anchor: 'bottom',
-            direction: 'row',
-            justify: false,
-            translateX: 0,
-            translateY: 32,
-            itemsSpacing: 0,
-            itemDirection: 'left-to-right',
-            itemWidth: 80,
-            itemHeight: 20,
-            itemOpacity: 0.75,
-            symbolSize: 12,
-            symbolShape: 'circle',
-            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-            effects: [{
-              on: 'hover',
-              style: {
-                itemBackground: 'rgba(0, 0, 0, .03)',
-                itemOpacity: 1
-              }
-            }]
-          }]}
-        />
-      </section>
-    </MyPaper>
+    <section style={{
+      height,
+      width
+    }}>
+      <ResponsiveLine
+        theme={theme}
+        data={data}
+        margin={{
+          top: 30,
+          right: 0,
+          bottom: 40,
+          left: 0
+        }}
+        xScale={{type: 'point'}}
+        yScale={{
+          type: 'linear',
+          min: 0,
+          max: 'auto',
+          stacked: false,
+          reverse: false
+        }}
+        curve="natural"
+        axisTop={null}
+        axisRight={null}
+        axisBottom={null}
+        axisLeft={null}
+        enableGridX={false}
+        enableGridY={false}
+        colors={{scheme: 'spectral'}}
+        enablePoints={false}
+        enableArea={true}
+        areaOpacity={0.15}
+        enableSlices="x"
+        legends={[{
+          anchor: 'bottom',
+          direction: 'row',
+          justify: false,
+          translateX: 0,
+          translateY: 32,
+          itemsSpacing: 0,
+          itemDirection: 'left-to-right',
+          itemWidth: 80,
+          itemHeight: 20,
+          itemOpacity: 0.75,
+          symbolSize: 12,
+          symbolShape: 'circle',
+          symbolBorderColor: 'rgba(0, 0, 0, .5)',
+          effects: [{
+            on: 'hover',
+            style: {
+              itemBackground: 'rgba(0, 0, 0, .03)',
+              itemOpacity: 1
+            }
+          }]
+        }]}
+      />
+    </section>
   )
 }

@@ -1,9 +1,9 @@
 import {h} from 'preact' /** @jsx h */
 import {useStore} from '../api/StoreProvider'
 import message from '../assets/message.txt'
-import MyResponsiveLine from '../components/MyResponsiveLine'
-import StockDetailsTable from '../components/StockDetailsTable'
-import StockSearch from '../components/StockSearch'
+import MyStockGraph from '../components/stocks/MyStockGraph'
+import StockDetailsTable from '../components/stocks/StockDetailsTable'
+import StockSearch from '../components/stocks/StockSearch'
 import InfoItem from '../components/InfoItem'
 import {Grid} from '@material-ui/core'
 
@@ -18,15 +18,15 @@ export default function Stocks() {
           title="Welcome to stocks route"
           message={message} />
       </Grid>
-      {stocks.length ?
+      {stocks.details.length ?
         <Grid item xs={12}>
-          <MyResponsiveLine data={stocks} title="Timeseries" height="200px" width="100%" />
+          <MyStockGraph />
         </Grid>
         : null}
       <Grid item xs={12} md={3}>
-        <StockSearch elevation={stocks.length ? 1 : 16} />
+        <StockSearch />
       </Grid>
-      {stocks.length ?
+      {stocks.details.length ?
         <Grid item xs={12} md={9}>
           <StockDetailsTable />
         </Grid>

@@ -1,10 +1,10 @@
 import {h} from 'preact' /** @jsx h */
-import {useStore} from '../api/StoreProvider'
-import StockService from '../api/StockService'
-import {mergedStockInfo, newStockDataIsValid} from '../utils/StockUtils'
-import Title from './Title'
-import MyPaper from './MyPaper'
-import TableActions from './TableActions'
+import {useStore} from '../../api/StoreProvider'
+import StockService from '../../api/StockService'
+import {mergedStockInfo, newStockDataIsValid} from '../../utils/StockUtils'
+import Title from '../Title'
+import MyPaper from '../MyPaper'
+import TableActions from '../TableActions'
 import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
 
 export default function StockDetailsTable() {
@@ -12,14 +12,18 @@ export default function StockDetailsTable() {
 
   function removeStock(event, symbol) {
     event.preventDefault()
-    const newStocks = stocks.filter(stock => stock.id !== symbol)
-    setStocks(newStocks)
+    setStocks({
+      details: stocks.details.filter(stock => stock.id !== symbol),
+      week: stocks.week.filter(stock => stock.id !== symbol),
+      month: stocks.month.filter(stock => stock.id !== symbol),
+      year: stocks.year.filter(stock => stock.id !== symbol),
+      threeYear: stocks.threeYear.filter(stock => stock.id !== symbol)
+    })
   }
 
   function refreshStock(event, symbol) {
     event.preventDefault()
-    const duration = 'year'
-    StockService.fetchStockData(symbol, duration)
+    StockService.fetchStockData(symbol)
       .then(newStockInfo => {
         if (newStockDataIsValid(newStockInfo)) {
           setStocks(mergedStockInfo(symbol, newStockInfo, stocks))
@@ -44,9 +48,9 @@ export default function StockDetailsTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {stocks.map(stock => (
+          {stocks.details.map(stock => (
             <TableRow key={stock.id}>
-              <TableCell component="th" scope="row">
+              <TableCell scope="row">
                 <TableActions 
                   identifier={stock.id}
                   removeCallback={removeStock}

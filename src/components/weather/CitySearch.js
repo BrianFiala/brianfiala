@@ -1,13 +1,13 @@
 import {h} from 'preact' /** @jsx h */
 import {useRef} from 'preact/hooks'
-import {useStore} from '../api/StoreProvider'
-import WeatherService from '../api/WeatherService'
-import {mergedCityInfo} from '../utils/WeatherUtils'
-import Title from './Title'
-import MyPaper from './MyPaper'
+import {useStore} from '../../api/StoreProvider'
+import WeatherService from '../../api/WeatherService'
+import {mergedCityInfo} from '../../utils/WeatherUtils'
+import Title from '../Title'
+import MyPaper from '../MyPaper'
 import {Button, Input} from '@material-ui/core'
 
-export default function CitySearch({elevation}) {
+export default function CitySearch() {
   const {cities, setCities } = useStore()
   const cityInput = useRef(null)
   const stateInput = useRef(null)
@@ -28,7 +28,7 @@ export default function CitySearch({elevation}) {
   }
 
   return (
-    <MyPaper elevation={elevation}>
+    <MyPaper elevation={cities.length ? 1 : 16}>
       <Title>Lookup a city</Title>
       <Input
         style={{margin: '10px', padding: '5px'}}

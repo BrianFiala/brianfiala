@@ -5,14 +5,26 @@ export const StoreContext = createContext()
 
 export const StoreProvider = ({children}) => {
   const [cities, setCities] = useState([])
-  const [stocks, setStocks] = useState([])
+  const [stocks, setStocks] = useState({
+    details: [],
+    week: [],
+    month: [],
+    year: [],
+    threeYear: []
+  })
+  const [timeframe, setTimeframe] = useState("month")
+  const [type, setType] = useState("actual")
 
   return (
     <StoreContext.Provider value={{
       stocks,
       setStocks,
       cities,
-      setCities
+      setCities,
+      timeframe,
+      setTimeframe,
+      type,
+      setType
     }}>
       {children}
     </StoreContext.Provider>

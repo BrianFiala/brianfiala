@@ -2,56 +2,57 @@ import {h} from 'preact' /** @jsx h */
 import MenuIcon from '@material-ui/icons/Menu'
 import BrightnessIcon from '@material-ui/icons/Brightness4Outlined'
 import {makeStyles, useTheme} from '@material-ui/styles'
-import {AppBar, Toolbar, Typography, IconButton} from '@material-ui/core'
+import {AppBar, IconButton, Slide, Toolbar, Typography, useScrollTrigger} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(4),
-    [theme.breakpoints.up('sm')]: {
-      marginRight: theme.spacing(6)
-    }
+    zIndex: 1301
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginLeft: theme.spacing(4),
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(6)
+    }
   }
 }))
 
 export default function MyAppBar({menuCallback, toggleTheme}) {
   const classes = useStyles(useTheme())
+  const trigger = useScrollTrigger({
+    threshold: 50
+  })
 
   return (
-    <AppBar
-      color="primary"
-      position="absolute"
-      className={classes.appBar}>
-      <Toolbar>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="expand menu"
-          onClick={menuCallback}
-          className={classes.menuButton}>
-          <MenuIcon />
-        </IconButton>
-        <Typography
-          component="h1"
-          variant="h6"
-          color="inherit"
-          noWrap
-          className={classes.title}>
-          Widgety Dashboard
-        </Typography>
-        <IconButton
-          edge="end"
-          color="inherit"
-          aria-label="toggle theme"
-          onClick={toggleTheme}>
-          <BrightnessIcon />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+    <Slide appear={false} direction="down" in={!trigger}>
+      <AppBar
+        color="primary"
+        className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="expand menu"
+            onClick={menuCallback}>
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.title}>
+            Widgety Dashboard
+          </Typography>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="toggle theme"
+            onClick={toggleTheme}>
+            <BrightnessIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </Slide>
   )
 }

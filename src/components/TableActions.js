@@ -6,11 +6,9 @@ import {Container, IconButton} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => {
   return {
-    iconButton: {
-      paddingLeft: theme.spacing(1)
-    },
     actionIconContainer: {
-      display: 'flex'
+      display: 'flex',
+      marginLeft: -theme.spacing(2) + 2
     }
   }
 })
@@ -26,16 +24,13 @@ export default function TableActions({identifier, removeCallback, refreshCallbac
         edge="start"
         aria-label="remove"
         color="primary"
-        className={classes.iconButton}
-        onClick={event => {removeCallback(event, identifier)}}>
+        onClick={event => removeCallback(event, identifier)}>
         <TrashIcon />
       </IconButton>
       <IconButton
-        edge="start"
         aria-label="refresh"
         color="primary"
-        className={classes.iconButton}
-        onClick={event => {refreshCallback(event, identifier)}}>
+        onClick={event => refreshCallback(event, identifier)}>
         <RefreshIcon />
       </IconButton>
     </Container>

@@ -14,7 +14,8 @@ export default function Header({toggleTheme}) {
         menuCallback={toggleDrawer}
         toggleTheme={toggleTheme}  />
       <Paper>
-        <MyDrawer open={open} />
+        {/* TODO: toggle drawer is not working */}
+        <MyDrawer open={open} toggleDrawer={toggleDrawer} />
       </Paper>
     </header>
   )
