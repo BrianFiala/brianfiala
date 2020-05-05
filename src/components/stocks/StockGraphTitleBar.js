@@ -4,7 +4,7 @@ import {useStore} from '../../api/StoreProvider'
 import Title from '../Title'
 import SettingsIcon from '@material-ui/icons/Settings'
 import {makeStyles, useTheme} from '@material-ui/styles'
-import {Container, Divider, FormControl, FormControlLabel, FormLabel, IconButton, Menu, MenuItem, Radio, RadioGroup } from '@material-ui/core'
+import {Container, Divider, FormControl, FormControlLabel, FormLabel, IconButton, Menu, Radio, RadioGroup } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => {
   return {
@@ -81,7 +81,7 @@ export default function StockGraphTitleBar() {
               <FormControlLabel className={classes.field} value="week" control={<Radio color="primary" />} label="Week" />
               <FormControlLabel className={classes.field} value="month" control={<Radio color="primary" />} label="Month" />
               <FormControlLabel className={classes.field} value="year" control={<Radio color="primary" />} label="Year" />
-              <FormControlLabel className={classes.field} value="threeYear" control={<Radio color="primary" />} label="Three Years" />
+              <FormControlLabel className={classes.field} value="threeYear" control={<Radio color="primary" />} label="Tres Años" />
             </RadioGroup>
           </FormControl>
           <Divider className={classes.divider} />

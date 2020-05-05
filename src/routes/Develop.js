@@ -12,7 +12,7 @@ import {Grid} from '@material-ui/core'
 export default function Develop() {
   const {cities, setCities, stocks, setStocks } = useStore()
   if (!cities.length) setCities(devCities)
-  // if (!stocks.length) setStocks(devStocks)
+  if (!stocks.length) setStocks(devStocks)
 
   return (
     <Grid container spacing={3}>

@@ -10,7 +10,6 @@ import {Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/cor
 export default function StockDetailsTable() {
   const {stocks, setStocks} = useStore()
 
-  // TODO: test this
   function removeStock(event, symbol) {
     event.preventDefault()
     setStocks({

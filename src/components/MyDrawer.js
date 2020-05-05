@@ -35,6 +35,7 @@ export default function MyDrawer({open, toggleDrawer}) {
       classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)}}
       open={open}>
       <div className={classes.appBarSpacer} />
+      {/* TODO: toggle drawer is not working */}
       <NavList callback={toggleDrawer} />
     </Drawer>
   )
