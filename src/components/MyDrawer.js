@@ -1,8 +1,9 @@
 import {h} from 'preact' /** @jsx h */
 import clsx from 'clsx'
 import NavList from './NavList'
+import {useHeaderState} from '../api/HeaderStateProvider'
 import {makeStyles, useTheme} from '@material-ui/styles'
-import {Drawer} from '@material-ui/core'
+import {Drawer, Paper} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -27,16 +28,20 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function MyDrawer({open, toggleDrawer}) {
+export default function MyDrawer() {
+  const {open, toggleDrawer} = useHeaderState()
   const classes = useStyles(useTheme())
 
   return (
-    <Drawer
-      classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)}}
-      open={open}>
-      <div className={classes.appBarSpacer} />
-      {/* TODO: toggle drawer is not working */}
-      <NavList callback={toggleDrawer} />
-    </Drawer>
+    <Paper>
+      <Drawer
+        classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)}}
+        open={open}
+        onClose={event => toggleDrawer(event, false)}
+        transitionDuration={1000}>
+        <div className={classes.appBarSpacer} />
+        <NavList />
+      </Drawer>
+    </Paper>
   )
 }

@@ -1,4 +1,5 @@
 import {h} from 'preact' /** @jsx h */
+import {useHeaderState} from '../api/HeaderStateProvider'
 import MenuIcon from '@material-ui/icons/Menu'
 import BrightnessIcon from '@material-ui/icons/Brightness4Outlined'
 import {makeStyles, useTheme} from '@material-ui/styles'
@@ -17,11 +18,10 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function MyAppBar({menuCallback, toggleTheme}) {
+export default function MyAppBar({toggleTheme}) {
+  const {toggleDrawer} = useHeaderState()
   const classes = useStyles(useTheme())
-  const trigger = useScrollTrigger({
-    threshold: 50
-  })
+  const trigger = useScrollTrigger({threshold: 75})
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
@@ -33,7 +33,8 @@ export default function MyAppBar({menuCallback, toggleTheme}) {
             edge="start"
             color="inherit"
             aria-label="expand menu"
-            onClick={menuCallback}>
+            onClick={event => toggleDrawer(event)}
+            onKeyDown={event => toggleDrawer(event)}>
             <MenuIcon />
           </IconButton>
           <Typography
