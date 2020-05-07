@@ -7,7 +7,6 @@ export default function Header({toggleTheme}) {
   return (
     <HeaderStateProvider>
       <header>
-        {/* TODO: Hoist toggleTheme into a provider */}
         <MyAppBar toggleTheme={toggleTheme} />
         <MyDrawer />
       </header>

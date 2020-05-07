@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 export default function MyAppBar({toggleTheme}) {
   const {toggleDrawer} = useHeaderState()
   const classes = useStyles(useTheme())
-  const trigger = useScrollTrigger({threshold: 75})
+  const trigger = useScrollTrigger({threshold: 64})
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>

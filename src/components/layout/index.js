@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: '100%'
   },
   contents: {
-    minHeight: '100%',
+    minHeight: 'calc(100% - 64px)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

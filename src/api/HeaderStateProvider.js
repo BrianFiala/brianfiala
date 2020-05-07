@@ -6,9 +6,9 @@ export const useHeaderState = () => useContext(HeaderStateContext)
 
 export const HeaderStateProvider = ({children}) => {
   const [open, setOpen] = useState(false)
-  
+
   function toggleDrawer(event, providedValue) {
-    if (event.type !== 'keydown' || (event.key === 'Tab' || event.key === 'Shift')) {
+    if (!(event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift'))) {
       setOpen(typeof providedValue !== "undefined" ? providedValue : !open)
     }
   }
