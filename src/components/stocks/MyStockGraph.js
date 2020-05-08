@@ -11,7 +11,7 @@ export default function MyGraph() {
     <MyPaper unscrollable={true}>
       <StockGraphTitleBar />
       <MyResponsiveLine
-        height="200px"
+        height="368px"
         width="100%"
         data={stocks[timeframe]} />
     </MyPaper>
