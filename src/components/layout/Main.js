@@ -7,7 +7,7 @@ import Stocks from '../../routes/Stocks'
 import Home from '../../routes/Home'
 import Develop from '../../routes/Develop'
 
-export default function Main() {  
+export default function Main() {
   return (
     <StoreProvider>
       <Router>

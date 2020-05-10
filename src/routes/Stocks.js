@@ -1,4 +1,6 @@
 import {h} from 'preact' /** @jsx h */
+import {useEffect} from 'preact/hooks'
+import {useLoaderEffect} from '../effects/LoaderEffectProvider'
 import {useStore} from '../api/StoreProvider'
 import message from '../assets/message.txt'
 import MyStockGraph from '../components/stocks/MyStockGraph'
@@ -9,6 +11,11 @@ import {Grid} from '@material-ui/core'
 
 export default function Stocks() {
   const {stocks} = useStore()
+  const {setLoaded} = useLoaderEffect()
+ 
+  useEffect(() => {
+    setLoaded(true)
+  }, [setLoaded])
   
   return (
     <Grid container spacing={3}>

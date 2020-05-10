@@ -8,7 +8,6 @@ import {Container} from '@material-ui/core/'
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    // TODO: can I remove the following lines?
     width: '100%',
     minHeight: '100%'
   },
