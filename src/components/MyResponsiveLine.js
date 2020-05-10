@@ -33,10 +33,6 @@ export default function ResponsiveLineGraph({data, height, width}) {
           reverse: false
         }}
         curve="natural"
-        axisTop={null}
-        axisRight={null}
-        axisBottom={null}
-        axisLeft={null}
         enableGridX={false}
         enableGridY={false}
         colors={{scheme: 'spectral'}}

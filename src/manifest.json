@@ -4,6 +4,8 @@
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
+  "background_color": "#607d8b",
+  "theme_color": "#607d8b",
   "icons": [
     {
       "src": "/assets/icons/android-chrome-192x192.png",
