@@ -1,6 +1,4 @@
 import {h} from 'preact' /** @jsx h */
-import {useEffect} from 'preact/hooks'
-import {useLoaderEffect} from '../effects/LoaderEffectProvider'
 import {useStore} from '../api/StoreProvider'
 import devCities from '../assets/sample-cities.json'
 import devStocks from '../assets/sample-stocks.json'
@@ -14,12 +12,7 @@ import {Grid} from '@material-ui/core'
 export default function Develop() {
   const {cities, setCities, stocks, setStocks } = useStore()
   if (!cities.length) setCities(devCities)
-  if (!stocks.length) setStocks(devStocks)
-  const {setLoaded} = useLoaderEffect()
- 
-  useEffect(() => {
-    setLoaded(true)
-  }, [setLoaded])
+  if (!stocks.details.length) setStocks(devStocks)
 
   return (
     <Grid container spacing={3}>

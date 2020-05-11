@@ -3,7 +3,7 @@ import {useState} from 'preact/hooks'
 import 'typeface-roboto'
 import './styles'
 import defaults from './theme'
-import {LoaderEffectProvider} from './effects/LoaderEffectProvider'
+import Loader from './effects/Loader'
 import Layout from './components/layout'
 import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 import {CssBaseline} from '@material-ui/core'
@@ -19,11 +19,10 @@ export default function App() {
 
   return (
     <div id="app">
+      <Loader />
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <LoaderEffectProvider>
-          <Layout toggleTheme={toggleTheme} />
-        </LoaderEffectProvider>
+        <Layout toggleTheme={toggleTheme} />
       </ThemeProvider>
     </div>
   )

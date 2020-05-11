@@ -1,4 +1,5 @@
 import {createContext, h} from 'preact' /** @jsx h */
+import Loader from './Loader'
 import {useState, useContext, useLayoutEffect, useRef} from 'preact/hooks'
 
 const LoaderEffectContext = createContext()
@@ -14,12 +15,7 @@ export const LoaderEffectProvider = ({children}) => {
 
   return (
     <LoaderEffectContext.Provider value={{loaded, setLoaded}}>
-      <div class="loader" ref={loader} style={{opacity: loaded ? 0 : 1}}>
-        <div class="la-pacman la-2x">
-          <div /><div /><div />
-          <div /><div /><div />
-        </div>
-      </div>
+      <Loader ref={loader} style={{opacity: loaded ? 0 : 1}} />
       {children}
     </LoaderEffectContext.Provider>
   )

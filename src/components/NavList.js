@@ -1,6 +1,4 @@
 import {h} from 'preact' /** @jsx h */
-import {useEffect} from 'preact/hooks'
-import {useLoaderEffect} from '../effects/LoaderEffectProvider'
 import {useHeaderState} from '../api/HeaderStateProvider'
 import HomeIcon from '@material-ui/icons/People'
 import WeatherIcon from '@material-ui/icons/CloudOutlined'
@@ -21,18 +19,10 @@ const styles = {
 
 export default function NavList() {
   const {toggleDrawer} = useHeaderState()
-  const {setLoaded} = useLoaderEffect()
 
   function onClick(event) {
-    // TODO: I think we can remove this
-    setLoaded(false)
     toggleDrawer(event, false)
   }
- 
-  // TODO: I think we can remove this
-  useEffect(() => {
-    setLoaded(false)
-  }, [setLoaded])
 
   return (
     <List style={styles.list}>

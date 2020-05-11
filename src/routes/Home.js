@@ -1,17 +1,9 @@
 import {h} from 'preact' /** @jsx h */
-import {useEffect} from 'preact/hooks'
-import {useLoaderEffect} from '../effects/LoaderEffectProvider'
 import message from '../assets/message.txt'
 import InfoItem from '../components/InfoItem'
 import {Grid} from '@material-ui/core'
 
 export default function Home() {
-  const {setLoaded} = useLoaderEffect()
- 
-  useEffect(() => {
-    setLoaded(true)
-  }, [setLoaded])
-  
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
