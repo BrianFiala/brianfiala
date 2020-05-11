@@ -1,7 +1,7 @@
 import {h} from 'preact' /** @jsx h */
-import {Grid} from '@material-ui/core'
-import InfoItem from '../components/InfoItem'
 import message from '../assets/message.txt'
+import InfoItem from '../components/InfoItem'
+import {Grid} from '@material-ui/core'
 
 export default function NotFound() {
   return (

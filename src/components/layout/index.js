@@ -8,7 +8,6 @@ import {Container} from '@material-ui/core/'
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    // TODO: can I remove the following lines?
     width: '100%',
     minHeight: '100%'
   },
@@ -27,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Layout({toggleTheme}) {
   const classes = useStyles(useTheme())
-  
+
   return (
     <div className={classes.root}>
       <Header toggleTheme={toggleTheme} />
@@ -36,7 +35,9 @@ export default function Layout({toggleTheme}) {
         <Container
           disableGutters
           className={classes.contents}>
-          <Main />
+          <Container disableGutters>
+            <Main />
+          </Container>
           <Footer />
         </Container>
       </Container>

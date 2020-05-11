@@ -8,7 +8,7 @@ import {Grid} from '@material-ui/core'
 
 export default function Weather() {
   const {cities} = useStore()
-  
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>

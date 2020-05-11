@@ -38,7 +38,7 @@ export default function MyDrawer() {
         classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)}}
         open={open}
         onClose={event => toggleDrawer(event, false)}
-        transitionDuration={1000}>
+        transitionDuration={420}>
         <div className={classes.appBarSpacer} />
         <NavList />
       </Drawer>
