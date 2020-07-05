@@ -20,7 +20,7 @@ export default function Footer() {
         {'Copyright © '}
         <Link
           color="inherit"
-          href="http://brianfiala.club/">
+          href="mailto:serpentsmiles2@gmail.com">
           Brian Fiala
         </Link>{' '}
         {new Date().getFullYear()}
