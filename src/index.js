@@ -1,5 +1,6 @@
 import {h} from 'preact' /** @jsx h */
 import {useState} from 'preact/hooks'
+import 'typeface-roboto'
 import './styles'
 import defaults from './theme'
 import Loader from './effects/Loader'

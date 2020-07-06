@@ -63,7 +63,8 @@
     "preact": "^10.4.1",
     "preact-context-provider": "^2.0.0-preactx.2",
     "preact-render-to-string": "^5.1.4",
-    "preact-router": "^3.2.1"
+    "preact-router": "^3.2.1",
+    "typeface-roboto": "0.0.75"
   },
   "jest": {
     "preset": "jest-preset-preact",
