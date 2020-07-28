@@ -2,7 +2,7 @@ import {h} from 'preact' /** @jsx h */
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import {makeStyles, useTheme} from '@material-ui/styles'
+import {makeStyles, useTheme} from '@material-ui/core/styles'
 import {Container} from '@material-ui/core/'
 
 const useStyles = makeStyles(theme => ({

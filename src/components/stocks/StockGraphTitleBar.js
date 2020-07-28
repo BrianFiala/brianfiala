@@ -3,7 +3,7 @@ import {useState} from 'preact/hooks'
 import {useStore} from '../../api/StoreProvider'
 import Title from '../Title'
 import SettingsIcon from '@material-ui/icons/Settings'
-import {makeStyles, useTheme} from '@material-ui/styles'
+import {makeStyles, useTheme} from '@material-ui/core/styles'
 import {Container, Divider, FormControl, FormControlLabel, FormLabel, IconButton, Menu, Radio, RadioGroup } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => {

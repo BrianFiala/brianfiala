@@ -1,6 +1,6 @@
 import {h} from 'preact' /** @jsx h */
 import {ResponsiveLine} from '@nivo/line'
-import {useTheme} from '@material-ui/styles'
+import {useTheme} from '@material-ui/core/styles'
 
 export default function ResponsiveLineGraph({data, height, width}) {
   const theme = useTheme()

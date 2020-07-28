@@ -2,7 +2,7 @@ import {h} from 'preact' /** @jsx h */
 import clsx from 'clsx'
 import NavList from './NavList'
 import {useHeaderState} from '../api/HeaderStateProvider'
-import {makeStyles, useTheme} from '@material-ui/styles'
+import {makeStyles, useTheme} from '@material-ui/core/styles'
 import {Drawer, Paper} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({

@@ -1,7 +1,7 @@
 import {h} from 'preact' /** @jsx h */
 import TrashIcon from '@material-ui/icons/DeleteOutlined'
 import RefreshIcon from '@material-ui/icons/RefreshOutlined'
-import {makeStyles, useTheme} from '@material-ui/styles'
+import {makeStyles, useTheme} from '@material-ui/core/styles'
 import {Container, IconButton} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => {

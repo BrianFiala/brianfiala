@@ -1,5 +1,5 @@
 import {h} from 'preact' /** @jsx h */
-import {makeStyles, useTheme} from '@material-ui/styles'
+import {makeStyles, useTheme} from '@material-ui/core/styles'
 import {Paper} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
