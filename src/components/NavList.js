@@ -4,6 +4,9 @@ import HomeIcon from '@material-ui/icons/People'
 import WeatherIcon from '@material-ui/icons/CloudOutlined'
 import StocksIcon from '@material-ui/icons/TrendingUp'
 import DeveloperIcon from '@material-ui/icons/DeveloperMode'
+import VideoLibraryIcon from '@material-ui/icons/VideoLibrary'
+import PolicyIcon from '@material-ui/icons/Policy'
+import CopyrightIcon from '@material-ui/icons/Copyright'
 import {List, Link, ListItem, ListItemText, ListItemIcon} from '@material-ui/core'
 
 const styles = {
@@ -47,11 +50,32 @@ export default function NavList() {
           <ListItemText primary="Stocks" />
         </Link>
       </ListItem>
+      <ListItem component="li" button key="Videos"
+        onClick={onClick}>
+        <Link style={styles.link} href="/videos">
+          <ListItemIcon><VideoLibraryIcon color="primary" /></ListItemIcon>
+          <ListItemText primary="Videos" />
+        </Link>
+      </ListItem>
       <ListItem component="li" button key="Develop"
         onClick={onClick}>
         <Link style={styles.link} href="/develop">
           <ListItemIcon><DeveloperIcon color="primary" /></ListItemIcon>
           <ListItemText primary="Develop" />
+        </Link>
+      </ListItem>
+      <ListItem component="li" button key="PrivacyPolicy"
+        onClick={onClick}>
+        <Link style={styles.link} href="/privacypolicy">
+          <ListItemIcon><PolicyIcon color="primary" /></ListItemIcon>
+          <ListItemText primary="Privacy" />
+        </Link>
+      </ListItem>
+      <ListItem component="li" button key="TermsOfService"
+        onClick={onClick}>
+        <Link style={styles.link} href="/termsofservice">
+          <ListItemIcon><CopyrightIcon color="primary" /></ListItemIcon>
+          <ListItemText primary="Terms" />
         </Link>
       </ListItem>
     </List>

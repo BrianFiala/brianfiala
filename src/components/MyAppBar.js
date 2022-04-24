@@ -3,7 +3,7 @@ import {useHeaderState} from '../api/HeaderStateProvider'
 import MenuIcon from '@material-ui/icons/Menu'
 import BrightnessIcon from '@material-ui/icons/Brightness4Outlined'
 import {makeStyles, useTheme} from '@material-ui/styles'
-import {AppBar, IconButton, Slide, Toolbar, Typography, useScrollTrigger} from '@material-ui/core'
+import {AppBar, IconButton, Toolbar, Typography} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -21,39 +21,36 @@ const useStyles = makeStyles(theme => ({
 export default function MyAppBar({toggleTheme}) {
   const {toggleDrawer} = useHeaderState()
   const classes = useStyles(useTheme())
-  const trigger = useScrollTrigger({threshold: 32})
 
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar
-        color="primary"
-        className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="expand menu"
-            onClick={event => toggleDrawer(event)}
-            onKeyDown={event => toggleDrawer(event)}>
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}>
-            Widgety Dashboard
-          </Typography>
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="toggle theme"
-            onClick={toggleTheme}>
-            <BrightnessIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </Slide>
+    <AppBar
+      color="primary"
+      className={classes.appBar}>
+      <Toolbar>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="expand menu"
+          onClick={event => toggleDrawer(event)}
+          onKeyDown={event => toggleDrawer(event)}>
+          <MenuIcon />
+        </IconButton>
+        <Typography
+          component="h1"
+          variant="h6"
+          color="inherit"
+          noWrap
+          className={classes.title}>
+          Widgety Dashboard
+        </Typography>
+        <IconButton
+          edge="end"
+          color="inherit"
+          aria-label="toggle theme"
+          onClick={toggleTheme}>
+          <BrightnessIcon />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   )
 }

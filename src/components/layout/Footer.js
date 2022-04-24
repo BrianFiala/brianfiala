@@ -20,7 +20,7 @@ export default function Footer() {
     <footer style={styles.footerContainer}>
       <Link
         color="inherit"
-        href="/legal/privacypolicy"
+        href="/privacypolicy"
         style={styles.link}>
         <Typography
           variant="body2"
@@ -58,7 +58,7 @@ export default function Footer() {
       </Link>
       <Link
         color="inherit"
-        href="/legal/termsofservice"
+        href="/termsofservice"
         style={styles.link}>
         <Typography
           variant="body2"

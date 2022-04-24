@@ -4,16 +4,20 @@
     "title": "Home"
   },
   {
-    "url": "/develop",
-    "title": "Develop"
-  },
-  {
     "url": "/stocks",
     "title": "Stocks"
   },
   {
     "url": "/weather",
     "title": "Weather"
+  },
+  {
+    "url": "/videos",
+    "title": "Videos"
+  },
+  {
+    "url": "/develop",
+    "title": "Develop"
   },
   {
     "url": "/privacypolicy",

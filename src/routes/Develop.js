@@ -2,6 +2,7 @@ import {h} from 'preact' /** @jsx h */
 import {useStore} from '../api/StoreProvider'
 import devCities from '../assets/sample-cities.json'
 import devStocks from '../assets/sample-stocks.json'
+import MyVideo from '../components/MyVideo'
 import MyStockGraph from '../components/stocks/MyStockGraph'
 import StockSearch from '../components/stocks/StockSearch'
 import StockDetailsTable from '../components/stocks/StockDetailsTable'
@@ -17,11 +18,7 @@ export default function Develop() {
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
-        {/* <figure> */}
-        <video controls preload="metadata">
-          <source src="/assets/videos/NM Rock Biking -- just the hard stuff.mp4" type="video/mp4" />
-        </video>
-        {/* </figure> */}
+        <MyVideo />
       </Grid>
       {Boolean(stocks.details.length) && (
         <Grid item xs={12}>
