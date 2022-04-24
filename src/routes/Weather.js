@@ -20,11 +20,11 @@ export default function Weather() {
       <Grid item xs={12} md={3}>
         <CitySearch />
       </Grid>
-      {cities.length ?
+      {Boolean(cities.length) && (
         <Grid item xs={12} md={9}>
           <CityDetailsTable />
         </Grid>
-        : null}
+      )}
     </Grid>
   )
 }

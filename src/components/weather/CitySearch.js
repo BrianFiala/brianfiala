@@ -48,8 +48,9 @@ export default function CitySearch() {
         color="primary"
         aria-label="fetch weather"
         size="large"
-        onClick={onSubmit}>
-        FETCH WEATHER
+      >
+        {/* onClick={onSubmit}> */}
+        FETCH WEATHER -- OUT OF ORDER
       </Button>
     </MyPaper>
   )

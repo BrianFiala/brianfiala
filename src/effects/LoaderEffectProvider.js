@@ -10,7 +10,7 @@ export const LoaderEffectProvider = ({children}) => {
   const loader = useRef(null)
   
   useLayoutEffect(() => {
-    if (loader && loader.current) loader.current.style.opacity = loaded ? 0 : 1
+    if (loader.current) loader.current.style.opacity = loaded ? 0 : 1
   }, [loaded])
 
   return (

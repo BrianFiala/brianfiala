@@ -22,7 +22,7 @@ function removeLoader(loader) {
 export default function Main() {
 
   useEffect(() => {
-    document.querySelectorAll('.loader-wrapper').forEach(loader => removeLoader(loader))
+    document.querySelectorAll('.loader-wrapper').forEach(removeLoader)
   }, [])
 
   return (

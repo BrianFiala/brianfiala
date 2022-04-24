@@ -26,11 +26,11 @@ export default function Stocks() {
       <Grid item xs={12} md={3}>
         <StockSearch />
       </Grid>
-      {stocks.details.length ?
+      {Boolean(stocks.details.length) && (
         <Grid item xs={12} md={9}>
           <StockDetailsTable />
         </Grid>
-        : null}
+      )}
     </Grid>
   )
 }

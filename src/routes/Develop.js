@@ -16,27 +16,27 @@ export default function Develop() {
 
   return (
     <Grid container spacing={3}>
-      {stocks.details.length ?
+      {Boolean(stocks.details.length) && (
         <Grid item xs={12}>
           <MyStockGraph />
         </Grid>
-        : null}
+      )}
       <Grid item xs={12} md={3}>
         <StockSearch />
       </Grid>
-      {stocks.details.length ?
+      {Boolean(stocks.details.length) && (
         <Grid item xs={12} md={9}>
           <StockDetailsTable />
         </Grid>
-        : null}
+      )}
       <Grid item xs={12} md={3}>
         <CitySearch />
       </Grid>
-      {cities.length ?
+      {Boolean(cities.length) && (
         <Grid item xs={12} md={9}>
           <CityDetailsTable />
         </Grid>
-        : null}
+      )}
     </Grid>
   )
 }
