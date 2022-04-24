@@ -14,17 +14,18 @@ export default function CitySearch() {
 
   async function onSubmit(event) {
     event.preventDefault()
-    const city = cityInput.current.value.toUpperCase()
-    const state = stateInput.current.value.toUpperCase()
-    if (city && state) {
-      const newCityInfo = await WeatherService.getCurrentWeather(city, state)
-      if (newCityInfo.name) {
-        const newCities = mergedCityInfo(city, state, newCityInfo, cities)
-        setCities(newCities)
-        cityInput.current.value = ''
-        stateInput.current.value = ''
-      }
-    }
+    alert('open weather api integration is broken')
+    // const city = cityInput.current.value.toUpperCase()
+    // const state = stateInput.current.value.toUpperCase()
+    // if (city && state) {
+    //   const newCityInfo = await WeatherService.getCurrentWeather(city, state)
+    //   if (newCityInfo.name) {
+    //     const newCities = mergedCityInfo(city, state, newCityInfo, cities)
+    //     setCities(newCities)
+    //     cityInput.current.value = ''
+    //     stateInput.current.value = ''
+    //   }
+    // }
   }
 
   return (
@@ -48,9 +49,8 @@ export default function CitySearch() {
         color="primary"
         aria-label="fetch weather"
         size="large"
-      >
-        {/* onClick={onSubmit}> */}
-        FETCH WEATHER -- OUT OF ORDER
+        onClick={onSubmit}>
+        FETCH WEATHER
       </Button>
     </MyPaper>
   )

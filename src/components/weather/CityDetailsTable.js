@@ -12,20 +12,22 @@ export default function CityDetailsTable() {
 
   function removeCity(event, cityState) {
     event.preventDefault()
-    const newCities = cities.filter(city => `${city.name},${city.state}` !== cityState)
-    setCities(newCities)
+    alert('open weather api integration is broken')
+    // const newCities = cities.filter(city => `${city.name},${city.state}` !== cityState)
+    // setCities(newCities)
   }
 
   async function refreshCity(event, cityState) {
     event.preventDefault()
-    const cityAndState = cityState.split(',')
-    const city = cityAndState[0]
-    const state = cityAndState[1]
-    const newCityInfo = await WeatherService.getCurrentWeather(city, state)
-    if (newCityInfo.name) {
-      const newCities = mergedCityInfo(city, state, newCityInfo, cities)
-      setCities(newCities)
-    }
+    alert('open weather api integration is broken')
+    // const cityAndState = cityState.split(',')
+    // const city = cityAndState[0]
+    // const state = cityAndState[1]
+    // const newCityInfo = await WeatherService.getCurrentWeather(city, state)
+    // if (newCityInfo.name) {
+    //   const newCities = mergedCityInfo(city, state, newCityInfo, cities)
+    //   setCities(newCities)
+    // }
   }
 
   return (
