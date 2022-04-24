@@ -16,6 +16,13 @@ export default function Develop() {
 
   return (
     <Grid container spacing={3}>
+      <Grid item xs={12}>
+        {/* <figure> */}
+        <video controls preload="metadata">
+          <source src="/assets/videos/NM Rock Biking -- just the hard stuff.mp4" type="video/mp4" />
+        </video>
+        {/* </figure> */}
+      </Grid>
       {Boolean(stocks.details.length) && (
         <Grid item xs={12}>
           <MyStockGraph />
