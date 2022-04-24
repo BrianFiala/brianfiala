@@ -1,0 +1,26 @@
+[
+  {
+    "url": "/",
+    "title": "Home"
+  },
+  {
+    "url": "/develop",
+    "title": "Develop"
+  },
+  {
+    "url": "/stocks",
+    "title": "Stocks"
+  },
+  {
+    "url": "/weather",
+    "title": "Weather"
+  },
+  {
+    "url": "/privacypolicy",
+    "title": "Privacy Policy"
+  },
+  {
+    "url": "/termsofservice",
+    "title": "Terms of Service"
+  }
+]
